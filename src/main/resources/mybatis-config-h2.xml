@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>        
+    </settings>
+    
+    <typeAliases>
+        <typeAlias type='com.edu.eci.arsw.f1manager.services.entities.Jugador' alias='Jugador'/>
+        <typeAlias type='com.edu.eci.arsw.f1manager.services.entities.Carrera' alias='Carrera'/>
+        <typeAlias type='com.edu.eci.arsw.f1manager.services.entities.Estrategia' alias='Estrategia'/>
+        <typeAlias type='com.edu.eci.arsw.f1manager.services.entities.Automovil' alias='Automovil'/>
+    </typeAliases>
+                         
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="org.h2.Driver" />
+                <property name="url" value="jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL" />
+                <property name="username" value="anonymous" />
+                <property name="password" value="" />
+            </dataSource>
+        </environment>
+    </environments>
+        
+    <mappers>    
+        <mapper resource="mappers/JugadorMapper.xml"></mapper>    
+        <mapper resource="mappers/CarreraMapper.xml"></mapper> 
+        <mapper resource="mappers/AutomovilMapper.xml"></mapper> 
+        <mapper resource="mappers/EstrategiaMapper.xml"></mapper> 
+    </mappers> 
+        
+        
+</configuration>

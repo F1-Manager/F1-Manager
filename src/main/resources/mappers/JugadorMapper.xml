@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.JugadorMapper">
+
+    <select  parameterType="map" id="consultarCarreraPorIdentificador" resultMap="CarreraResult"> 
+        select 
+            *
+        FROM  Acudiente as a left join Estudiante as e on e.Acudiente_correo=a.correo
+        WHERE e.codigo=#{codigo};
+    </select>
+
+    <resultMap type="Jugador" id="JugadorResult">
+        <id property="usuario" column="usuario"/>
+        <result property="contrasena" column="contrasena"/>
+        <result property="puntos" column="puntos"/>
+    </resultMap>
+
+    <resultMap type="Carrera" id="CarreraResult" >
+        <id property="identificador" column="identificador"/> 
+        <result property="clima" column="clima"/>
+        <result property="numeroVueltas" column="numeroVueltas"/>
+        <collection property="jugadores" ofType="Jugador" columnPrefix="Jugador_" resultMap="JugadorResult"/>
+    </resultMap>
+</mapper>

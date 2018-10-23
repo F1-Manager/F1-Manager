@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.CarreraMapper">
+
+    <select  parameterType="map" id="consultarCarreraPorIdentificador" resultMap="CarreraResult"> 
+        select 
+            c.identificador,
+            c.clima,
+            c.numeroVueltas,
+        
+            j.usuario as Jugador_usuario,
+            j.contrasena as Jugador_contrasena,
+            j.puntos as Jugador_puntos,
+            j.posicion as Jugador_posicion,
+            j.tiempo as Jugador_tiempo,
+            j.Automovil_idAutomovil as Jugador_Automovil_idAutomovil,
+            j.Estrategia_idEstrategia as Jugador_Estrategia_idEstrategia,
+            j.Carrera_identificador as Jugador_Carrera_identificador,
+        
+            a.idAutomovil as Automovil_idAutomovil,
+            a.color as Automovil_color,
+            a.aceleracion as Automovil_aceleracion,
+            a.resistencia as Automovil_resistencia,
+            a.velocidad as Automovil_velocidad,
+        
+            e.idEstrategia as Estrategia_idEstrategia,
+            e.llanta as Estrategia_llanta,
+            e.aerodinamico as Estrategia_aerodinamico,
+            e.trasmision as Estrategia_trasmision,
+            e.estilo as Estrategia_estilo
+        FROM  Carrera as c left join Jugador as j on j.Carrera_identificador=c.identificador left join Automovil as a on j.Automovil_idAutomovil=a.idAutomovil left join Estrategia as e on j.Estrategia_idEstrategia=e.idEstrategia
+        WHERE c.identificador=#{identificador};
+    </select>
+
+    <resultMap type="Jugador" id="JugadorResult">
+        <id property="usuario" column="usuario"/>
+        <result property="contrasena" column="contrasena"/>
+        <result property="puntos" column="puntos"/>
+        <association property="automovil" columnPrefix="Automovil_" resultMap="AutomovilResult"/>
+        <association property="estrategia" columnPrefix="Estrategia_" resultMap="EstrategiaResult"/>
+    </resultMap>
+
+    <resultMap type="Carrera" id="CarreraResult" >
+        <id property="identificador" column="identificador"/> 
+        <result property="clima" column="clima"/>
+        <result property="numeroVueltas" column="numeroVueltas"/>
+        <collection property="jugadores" ofType="Jugador" columnPrefix="Jugador_" resultMap="JugadorResult"/>
+    </resultMap>
+    
+    <resultMap type="Estrategia" id="EstrategiaResult">
+        <id property="idEstrategia" column="idEstrategia"/>
+        <result property="llanta" column="llanta"/>
+        <result property="aerodinamico" column="aerodinamico"/>
+        <result property="trasmision" column="trasmision"/>
+        <result property="estilo" column="estilo"/>
+    </resultMap>
+    
+    <resultMap type="Automovil" id="AutomovilResult">
+        <id property="idAutomovil" column="idAutomovil"/>
+        <result property="color" column="color"/>
+        <result property="aceleracion" column="aceleracion"/>
+        <result property="resistencia" column="resistencia"/>
+        <result property="velocidad" column="velocidad"/>
+    </resultMap>
+</mapper>
+
