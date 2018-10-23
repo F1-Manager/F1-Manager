@@ -4,13 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.JugadorMapper">
-
-    <select  parameterType="map" id="consultarCarreraPorIdentificador" resultMap="CarreraResult"> 
-        select 
-            *
-        FROM  Acudiente as a left join Estudiante as e on e.Acudiente_correo=a.correo
-        WHERE e.codigo=#{codigo};
-    </select>
+    
+    <update id="actualizarJugador">
+        UPDATE Jugador SET
+            puntos = #{puntos},
+            posicion = #{posicion},
+            tiempo = #{tiempo},
+            Automovil_idAutomovil = #{idAutomovil},
+            Carrera_identificador= #{idCarrera}
+        WHERE usuario=#{usuario};
+    </update>
+    
+    
 
     <resultMap type="Jugador" id="JugadorResult">
         <id property="usuario" column="usuario"/>
@@ -18,10 +23,4 @@
         <result property="puntos" column="puntos"/>
     </resultMap>
 
-    <resultMap type="Carrera" id="CarreraResult" >
-        <id property="identificador" column="identificador"/> 
-        <result property="clima" column="clima"/>
-        <result property="numeroVueltas" column="numeroVueltas"/>
-        <collection property="jugadores" ofType="Jugador" columnPrefix="Jugador_" resultMap="JugadorResult"/>
-    </resultMap>
 </mapper>

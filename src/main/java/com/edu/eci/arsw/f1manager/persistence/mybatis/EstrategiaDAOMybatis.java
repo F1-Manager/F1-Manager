@@ -7,6 +7,8 @@ package com.edu.eci.arsw.f1manager.persistence.mybatis;
 
 import com.edu.eci.arsw.f1manager.persistence.EstrategiaDAO;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.EstrategiaMapper;
+import com.edu.eci.arsw.f1manager.services.entities.Estrategia;
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -17,4 +19,13 @@ public class EstrategiaDAOMybatis implements EstrategiaDAO{
     
     @Autowired
     private EstrategiaMapper estrategia;
+
+    @Override
+    public void actualizarEstrategia(Estrategia estrategia) throws PersistenceException {
+        try{
+            this.estrategia.actualizarEstrategia(estrategia.getIdEstrategia(), estrategia.getLlanta(), estrategia.getAerodinamico(), estrategia.getTrasmision(), estrategia.getEstilo());
+        }catch(Exception e){
+            throw new PersistenceException("Error al actualizar la estrategia no."+estrategia.getIdEstrategia());
+        }
+    }
 }

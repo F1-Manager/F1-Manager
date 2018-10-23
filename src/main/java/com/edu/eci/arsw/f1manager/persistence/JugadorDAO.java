@@ -5,10 +5,12 @@
  */
 package com.edu.eci.arsw.f1manager.persistence;
 
+import com.edu.eci.arsw.f1manager.services.entities.Jugador;
+import org.apache.ibatis.exceptions.PersistenceException;
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
 public interface JugadorDAO {
-    
+    public void actualizarJugador(Jugador jugador) throws PersistenceException;
 }

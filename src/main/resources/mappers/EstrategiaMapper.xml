@@ -4,25 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.EstrategiaMapper">
+    
+    <update id="actualizarEstrategia">
+        UPDATE Estrategia SET
+            estilo=#{estilo},
+            llanata=#{llanta},
+            aerodinamico=#{aerodinamico},
+            trasmision =#{trasmision}
+        WHERE idEstrategia=#{idEstrategia}
+    </update>
 
-    <select  parameterType="map" id="consultarCarreraPorIdentificador" resultMap="CarreraResult"> 
-        select 
-            *
-        FROM  Acudiente as a left join Estudiante as e on e.Acudiente_correo=a.correo
-        WHERE e.codigo=#{codigo};
-    </select>
-
-    <resultMap type="Jugador" id="JugadorResult">
-        <id property="usuario" column="usuario"/>
-        <result property="contrasena" column="contrasena"/>
-        <result property="puntos" column="puntos"/>
-        <collection property="carreras" ofType="Carrera" columnPrefix="Carrera_" resultMap="CarreraResult"/>
+    <resultMap type="Estrategia" id="EstrategiaResult">
+        <id property="idEstrategia" column="idEstrategia"/>
+        <result property="llanta" column="llanta"/>
+        <result property="aerodinamico" column="aerodinamico"/>
+        <result property="trasmision" column="trasmision"/>
+        <result property="estilo" column="estilo"/>
     </resultMap>
-
-    <resultMap type="Carrera" id="CarreraResult" >
-        <id property="identificador" column="identificador"/> 
-        <result property="clima" column="clima"/>
-        <result property="numeroVueltas" column="numeroVueltas"/>
-        <collection property="jugadores" ofType="Jugador" columnPrefix="Jugador_" resultMap="JugadorResult"/>
-    </resultMap>
+    
 </mapper>

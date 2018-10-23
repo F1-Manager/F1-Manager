@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.CarreraMapper">
-
+    <insert id="crearCarrera">
+        INSERT INTO Carrera(identificador, clima, numeroVueltas)
+        values(#{identificador}, #{clima}, #{numeroVueltas});
+    </insert>
     <select  parameterType="map" id="consultarCarreraPorIdentificador" resultMap="CarreraResult"> 
         select 
             c.identificador,
