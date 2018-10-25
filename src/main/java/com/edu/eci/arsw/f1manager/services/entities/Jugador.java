@@ -16,8 +16,39 @@ public class Jugador {
     private int puntos;
     private int posicion;
     private float tiempo;
-    private Automovil automovil;
+    private int idAutomovil;
     private Estrategia estrategia;
+    private String idCarrera;
+
+    public Jugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int automovil, Estrategia estrategia, String idCarrera) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.puntos = puntos;
+        this.posicion = posicion;
+        this.tiempo = tiempo;
+        this.idAutomovil = automovil;
+        this.estrategia = estrategia;
+        this.idCarrera = idCarrera;
+    }
+
+    public Jugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int idAutomovil, String idCarrera) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.puntos = puntos;
+        this.posicion = posicion;
+        this.tiempo = tiempo;
+        this.idAutomovil = idAutomovil;
+        this.idCarrera = idCarrera;
+    }
+    
+    
+    public String getIdCarrera() {
+        return idCarrera;
+    }
+
+    public void setIdCarrera(String idCarrera) {
+        this.idCarrera = idCarrera;
+    }
 
     public String getUsuario() {
         return usuario;
@@ -59,14 +90,14 @@ public class Jugador {
         this.tiempo = tiempo;
     }
 
-    public Automovil getAutomovil() {
-        return automovil;
+    public int getIdAutomovil() {
+        return idAutomovil;
     }
 
-    public void setAutomovil(Automovil automovil) {
-        this.automovil = automovil;
+    public void setIdAutomovil(int idAutomovil) {
+        this.idAutomovil = idAutomovil;
     }
-
+    
     public Estrategia getEstrategia() {
         return estrategia;
     }

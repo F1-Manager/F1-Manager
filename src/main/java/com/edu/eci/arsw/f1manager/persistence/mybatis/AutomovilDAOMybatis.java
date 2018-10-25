@@ -10,11 +10,13 @@ import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.AutomovilMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Automovil;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
+@Service
 public class AutomovilDAOMybatis implements AutomovilDAO{
     
     @Autowired

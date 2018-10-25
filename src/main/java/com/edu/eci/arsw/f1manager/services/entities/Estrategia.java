@@ -17,6 +17,14 @@ public class Estrategia {
     private String trasmision;
     private String estilo;
 
+    public Estrategia(int idEstrategia, String llanta, String aerodinamico, String trasmision, String estilo) {
+        this.idEstrategia = idEstrategia;
+        this.llanta = llanta;
+        this.aerodinamico = aerodinamico;
+        this.trasmision = trasmision;
+        this.estilo = estilo;
+    }
+
     public int getIdEstrategia() {
         return idEstrategia;
     }

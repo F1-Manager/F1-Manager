@@ -17,6 +17,16 @@ public class Automovil {
     private int resistencia;
     private String velocidad;
 
+    public Automovil(int idAutomovil, String color, int aceleracion, int resistencia, String velocidad) {
+        this.idAutomovil = idAutomovil;
+        this.color = color;
+        this.aceleracion = aceleracion;
+        this.resistencia = resistencia;
+        this.velocidad = velocidad;
+    }
+    
+    
+
     public int getIdAutomovil() {
         return idAutomovil;
     }

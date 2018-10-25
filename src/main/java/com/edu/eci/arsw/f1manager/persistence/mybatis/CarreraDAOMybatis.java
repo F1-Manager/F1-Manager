@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.CarreraMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
+@Service
 public class CarreraDAOMybatis implements CarreraDAO{
     
     @Autowired

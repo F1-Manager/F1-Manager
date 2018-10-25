@@ -6,11 +6,15 @@
 package com.edu.eci.arsw.f1manager.persistence;
 
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
+import java.util.ArrayList;
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
+@Service
 public interface JugadorDAO {
     public void actualizarJugador(Jugador jugador) throws PersistenceException;
+    public ArrayList<Jugador> consultarJugadoresPorCarrera(String identificador) throws PersistenceException;
 }

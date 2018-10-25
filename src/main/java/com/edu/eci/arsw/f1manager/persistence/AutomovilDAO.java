@@ -7,11 +7,13 @@ package com.edu.eci.arsw.f1manager.persistence;
 
 import com.edu.eci.arsw.f1manager.services.entities.Automovil;
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
+
 public interface AutomovilDAO {
     public void actualizarAutomovil(Automovil automovil) throws PersistenceException;
 }

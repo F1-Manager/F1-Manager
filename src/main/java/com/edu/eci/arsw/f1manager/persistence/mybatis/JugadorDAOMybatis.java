@@ -9,12 +9,15 @@ import com.edu.eci.arsw.f1manager.persistence.JugadorDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.JugadorMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
+import java.util.ArrayList;
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
+@Service
 public class JugadorDAOMybatis implements JugadorDAO{
     
     @Autowired
@@ -23,9 +26,20 @@ public class JugadorDAOMybatis implements JugadorDAO{
     @Override
     public void actualizarJugador(Jugador jugador) throws PersistenceException {
         try{
-            this.jugador.actualizarJugador(jugador.getUsuario(), jugador.getPuntos(), jugador.getPosicion(), jugador.getTiempo(), jugador.getAutomovil().getIdAutomovil());
+            this.jugador.actualizarJugador(jugador.getUsuario(), jugador.getPuntos(), jugador.getPosicion(), jugador.getTiempo(), jugador.getIdAutomovil(),jugador.getIdCarrera());
         }catch(Exception e){
             throw new PersistenceException("Error al actualizar el jugador: "+jugador.getUsuario());
         }
+    }
+
+    @Override
+    public ArrayList<Jugador> consultarJugadoresPorCarrera(String identificador) throws PersistenceException {
+        ArrayList<Jugador> jugadores=new ArrayList<>();
+        try{
+            jugadores=jugador.consultarJugadoresPorCarrera(identificador);
+        }catch(Exception e){
+            throw new PersistenceException("Error al los jugadores de la carrera: "+identificador);
+        }
+        return jugadores;
     }
 }

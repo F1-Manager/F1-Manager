@@ -8,7 +8,7 @@
     <update id="actualizarEstrategia">
         UPDATE Estrategia SET
             estilo=#{estilo},
-            llanata=#{llanta},
+            llanta=#{llanta},
             aerodinamico=#{aerodinamico},
             trasmision =#{trasmision}
         WHERE idEstrategia=#{idEstrategia}

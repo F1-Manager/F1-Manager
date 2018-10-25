@@ -16,8 +16,13 @@ public class Carrera {
     private String identificador;
     private String clima;
     private int numeroVueltas;
-    private ArrayList<Jugador> jugadores;
 
+    public Carrera(String identificador, String clima, int numeroVueltas) {
+        this.identificador = identificador;
+        this.clima = clima;
+        this.numeroVueltas = numeroVueltas;
+    }
+    
     public String getIdentificador() {
         return identificador;
     }
@@ -41,14 +46,5 @@ public class Carrera {
     public void setNumeroVueltas(int numeroVueltas) {
         this.numeroVueltas = numeroVueltas;
     }
-
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
-    }
-
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
-    
     
 }

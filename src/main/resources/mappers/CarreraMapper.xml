@@ -37,14 +37,7 @@
         FROM  Carrera as c left join Jugador as j on j.Carrera_identificador=c.identificador left join Automovil as a on j.Automovil_idAutomovil=a.idAutomovil left join Estrategia as e on j.Estrategia_idEstrategia=e.idEstrategia
         WHERE c.identificador=#{identificador};
     </select>
-
-    <resultMap type="Jugador" id="JugadorResult">
-        <id property="usuario" column="usuario"/>
-        <result property="contrasena" column="contrasena"/>
-        <result property="puntos" column="puntos"/>
-        <association property="automovil" columnPrefix="Automovil_" resultMap="AutomovilResult"/>
-        <association property="estrategia" columnPrefix="Estrategia_" resultMap="EstrategiaResult"/>
-    </resultMap>
+    
 
     <resultMap type="Carrera" id="CarreraResult" >
         <id property="identificador" column="identificador"/> 
@@ -52,21 +45,6 @@
         <result property="numeroVueltas" column="numeroVueltas"/>
         <collection property="jugadores" ofType="Jugador" columnPrefix="Jugador_" resultMap="JugadorResult"/>
     </resultMap>
-    
-    <resultMap type="Estrategia" id="EstrategiaResult">
-        <id property="idEstrategia" column="idEstrategia"/>
-        <result property="llanta" column="llanta"/>
-        <result property="aerodinamico" column="aerodinamico"/>
-        <result property="trasmision" column="trasmision"/>
-        <result property="estilo" column="estilo"/>
-    </resultMap>
-    
-    <resultMap type="Automovil" id="AutomovilResult">
-        <id property="idAutomovil" column="idAutomovil"/>
-        <result property="color" column="color"/>
-        <result property="aceleracion" column="aceleracion"/>
-        <result property="resistencia" column="resistencia"/>
-        <result property="velocidad" column="velocidad"/>
-    </resultMap>
+
 </mapper>
 
