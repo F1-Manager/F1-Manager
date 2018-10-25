@@ -6,7 +6,6 @@
 package com.edu.eci.arsw.f1manager.persistence.mybatis;
 
 import com.edu.eci.arsw.f1manager.persistence.CarreraDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.CarreraMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarreraDAOMybatis implements CarreraDAO{
     
-    @Autowired
     private CarreraMapper carrera;
 
     @Override
@@ -27,6 +25,7 @@ public class CarreraDAOMybatis implements CarreraDAO{
         try{
             this.carrera.crearCarrera(carrera.getIdentificador(), carrera.getClima(), carrera.getNumeroVueltas());
         }catch(Exception e){
+            System.out.println("ERROR" +e.getMessage());
             throw new PersistenceException("Error al insertar la carrera no."+carrera.getIdentificador());
         }
     }

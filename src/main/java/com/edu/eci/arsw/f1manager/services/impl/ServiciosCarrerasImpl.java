@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServiciosCarrerasImpl {
+    
     @Autowired
     private AutomovilDAO automovil;
     @Autowired
@@ -100,7 +101,7 @@ public class ServiciosCarrerasImpl {
         }catch(Exception e){
             throw new ExcepcionServiciosCarreras("Error inesperado al consultar los jugadores de la carrera "+identificador);
         }
-         return null;
+         return jugadores;
     }
     
     

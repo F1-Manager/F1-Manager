@@ -6,7 +6,6 @@
 package com.edu.eci.arsw.f1manager.persistence.mybatis;
 
 import com.edu.eci.arsw.f1manager.persistence.JugadorDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.JugadorMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class JugadorDAOMybatis implements JugadorDAO{
     
-    @Autowired
     private JugadorMapper jugador;
 
     @Override
@@ -38,7 +36,7 @@ public class JugadorDAOMybatis implements JugadorDAO{
         try{
             jugadores=jugador.consultarJugadoresPorCarrera(identificador);
         }catch(Exception e){
-            throw new PersistenceException("Error al los jugadores de la carrera: "+identificador);
+            throw new PersistenceException("Error al consultar los jugadores de la carrera: "+identificador);
         }
         return jugadores;
     }

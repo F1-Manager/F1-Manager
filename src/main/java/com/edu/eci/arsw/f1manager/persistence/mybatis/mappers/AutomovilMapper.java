@@ -6,13 +6,11 @@
 package com.edu.eci.arsw.f1manager.persistence.mybatis.mappers;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
-@Service
 public interface AutomovilMapper {
     public void actualizarAutomovil(@Param("idAutomovil") int idAutomovil,@Param("color") String color, @Param("aceleracion")int aceleracion, @Param("resistencia")int resistencia, @Param("velocidad")String velocidad);
 }

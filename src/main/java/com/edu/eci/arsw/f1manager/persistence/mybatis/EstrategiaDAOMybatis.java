@@ -9,7 +9,6 @@ import com.edu.eci.arsw.f1manager.persistence.EstrategiaDAO;
 import com.edu.eci.arsw.f1manager.persistence.mybatis.mappers.EstrategiaMapper;
 import com.edu.eci.arsw.f1manager.services.entities.Estrategia;
 import org.apache.ibatis.exceptions.PersistenceException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class EstrategiaDAOMybatis implements EstrategiaDAO{
     
-    @Autowired
     private EstrategiaMapper estrategia;
 
     @Override
