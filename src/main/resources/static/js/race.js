@@ -3,6 +3,7 @@ var myGamePiece;
 var Game = (function () {
 
     var i = 0;
+    var laps=0;
     var speed = 0.01;
     var startGame = function() {
         myGamePiece = new component(5, "red", 10, 120);
@@ -41,14 +42,26 @@ var Game = (function () {
         this.newPos = function() {
             this.x = 240 - (200 * Math.cos(i));
             this.y = 135 + (100 * Math.sin(i));
-            console.log("x: " + (240 - (200 * Math.cos(i))));
+            
+            console.log("x: " + (240 - (200 * Math.cos(i) )));
             console.log("y: " + (135 + (100 * Math.sin(i))));
             i += speed;
             if(i >= 2*Math.PI) {
                 i = 0;
+                laps+=1;
+                
             }
+            rounds(this.x,this.y);
         }
     };
+    
+    var rounds = function(x,y){
+        if(laps==4){
+            speed=0;
+            myGameArea.clear();
+            alert("Finish!!!\nYou have win the race");
+        }
+    }
 
     var updateGameArea = function() {
         myGameArea.clear();
