@@ -10,6 +10,7 @@ import com.edu.eci.arsw.f1manager.persistence.CarreraDAO;
 import com.edu.eci.arsw.f1manager.persistence.EstrategiaDAO;
 import com.edu.eci.arsw.f1manager.persistence.JugadorDAO;
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
+import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import com.edu.eci.arsw.f1manager.services.entities.Estrategia;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Service;
  * @author diana
  */
 @Service
-public class ServiciosCarrerasImpl {
+public class ServiciosCarrerasImpl implements ServiciosCarreras{
     
     @Autowired
     private AutomovilDAO automovil;
@@ -40,6 +41,7 @@ public class ServiciosCarrerasImpl {
      * @param clima
      * @param numeroVueltas 
      */
+    @Override
     public void iniciarCarrera(String tipo,String clima, int numeroVueltas) throws ExcepcionServiciosCarreras{
         try{
             carrera.crearCarrera(new Carrera(tipo, clima, numeroVueltas));
@@ -59,6 +61,7 @@ public class ServiciosCarrerasImpl {
      * @param idAutomovil
      * @param idCarrera 
      */
+    @Override
     public void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int idAutomovil, String idCarrera) throws ExcepcionServiciosCarreras{
         try{
             jugador.actualizarJugador(new Jugador(usuario, idCarrera, puntos, posicion, tiempo, idAutomovil, idCarrera));
@@ -77,6 +80,7 @@ public class ServiciosCarrerasImpl {
      * @param aerodinamico
      * @param trasmision 
      */
+    @Override
     public void actualizarEstrategia(int idEstrategia, String estilo, String llanta, String aerodinamico, String trasmision ) throws ExcepcionServiciosCarreras{
         try{
             estrategia.actualizarEstrategia(new Estrategia(idEstrategia, llanta, aerodinamico, trasmision, estilo));
@@ -92,21 +96,20 @@ public class ServiciosCarrerasImpl {
      * @param identificador
      * @return 
      */
+    @Override
     public ArrayList<Jugador> consultarCarrera(String identificador) throws ExcepcionServiciosCarreras{
         ArrayList<Jugador> jugadores= new ArrayList<>();
         try{
-            jugadores=jugador.consultarJugadoresPorCarrera(identificador);
+            jugadores.add(new Jugador("Sebastian","password",712,1,5/3,3,new Estrategia(1,"Soft","Balanced","Balanced","Balanced"),"cl1"));
+            jugadores.add(new Jugador("Mateo", "qwerty", 1030, 2, 6/3, 1, new Estrategia(2,"Hard","Straight","Acceleration","Press down"), "cl1"));
+            jugadores.add(new Jugador("Diana","letmein",2000,3,7/3,5, new Estrategia(3, "Hard", "Balanced", "Acceleration", "Balanced"),"cl1"));
+            //jugadores=jugador.consultarJugadoresPorCarrera(identificador);"
         }catch(PersistenceException e){
             throw new ExcepcionServiciosCarreras(e.getMessage());
         }catch(Exception e){
             throw new ExcepcionServiciosCarreras("Error inesperado al consultar los jugadores de la carrera "+identificador);
         }
-         return jugadores;
+        return jugadores;
     }
-    
-    
-    
-    
-    
-    
+
 }

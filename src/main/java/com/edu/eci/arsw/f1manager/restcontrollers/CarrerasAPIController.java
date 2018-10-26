@@ -6,8 +6,9 @@
 package com.edu.eci.arsw.f1manager.restcontrollers;
 
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
+import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
-import com.edu.eci.arsw.f1manager.services.impl.ServiciosCarrerasImpl;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,13 +29,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarrerasAPIController {
     
     @Autowired
-    private ServiciosCarrerasImpl servicios;
+    private ServiciosCarreras servicios;
     
     @RequestMapping(method = RequestMethod.GET, value = "{identificador}")
     public ResponseEntity<?> obtenerJugadoresPorCarrera(@PathVariable("identificador") String identificador){
         try {
             ArrayList<Jugador> jugadores = servicios.consultarCarrera(identificador);
-            return new ResponseEntity<>(jugadores.toString(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(jugadores, HttpStatus.ACCEPTED);
         } catch (ExcepcionServiciosCarreras ex) {
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
