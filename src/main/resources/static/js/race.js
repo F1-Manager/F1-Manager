@@ -59,7 +59,7 @@ var Game = (function () {
         if(laps==4){
             speed=0;
             myGameArea.clear();
-            alert("Finish!!!\nYou have win the race");
+            "alert("Finish!!!\nYou have win the race");"
         }
     }
 
