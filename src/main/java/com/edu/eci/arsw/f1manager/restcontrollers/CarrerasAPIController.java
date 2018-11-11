@@ -7,6 +7,7 @@ package com.edu.eci.arsw.f1manager.restcontrollers;
 
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
+import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
 import com.google.gson.Gson;
 import java.util.ArrayList;
@@ -34,8 +35,11 @@ public class CarrerasAPIController {
     @RequestMapping(method = RequestMethod.GET, value = "{identificador}")
     public ResponseEntity<?> obtenerJugadoresPorCarrera(@PathVariable("identificador") String identificador){
         try {
-            ArrayList<Jugador> jugadores = servicios.consultarCarrera(identificador);
-            return new ResponseEntity<>(jugadores, HttpStatus.ACCEPTED);
+            servicios.iniciarCarrera("cl2", "Lluvia", 5);
+            //ArrayList<Jugador> jugadores = servicios.consultarCarrera(identificador);
+            Carrera carrera = servicios.consultarCarreraPorIdentificador(identificador);
+            System.out.println("Carrera "+carrera.getIdentificador()+","+carrera.getClima()+","+carrera.getNumeroVueltas());
+            return new ResponseEntity<>(carrera, HttpStatus.ACCEPTED);
         } catch (ExcepcionServiciosCarreras ex) {
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);

@@ -5,10 +5,6 @@
  */
 package com.edu.eci.arsw.f1manager.services.impl;
 
-import com.edu.eci.arsw.f1manager.persistence.AutomovilDAO;
-import com.edu.eci.arsw.f1manager.persistence.CarreraDAO;
-import com.edu.eci.arsw.f1manager.persistence.EstrategiaDAO;
-import com.edu.eci.arsw.f1manager.persistence.JugadorDAO;
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.entities.Carrera;
@@ -18,22 +14,30 @@ import java.util.ArrayList;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.edu.eci.arsw.f1manager.persistence.AutomovilRepository;
+import com.edu.eci.arsw.f1manager.persistence.CarreraRepository;
+import com.edu.eci.arsw.f1manager.persistence.EstrategiaRepository;
+import com.edu.eci.arsw.f1manager.persistence.JugadorRepository;
+import org.springframework.boot.CommandLineRunner;
 
 /**
  *
  * @author diana
  */
 @Service
-public class ServiciosCarrerasImpl implements ServiciosCarreras{
+public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunner{
+    
+    //@Autowired
+    //private AutomovilRepository automovil;
+    
+    //@Autowired
+    //private EstrategiaRepository estrategia;
     
     @Autowired
-    private AutomovilDAO automovil;
-    @Autowired
-    private EstrategiaDAO estrategia;
-    @Autowired
-    private CarreraDAO carrera;
-    @Autowired
-    private JugadorDAO jugador;
+    private CarreraRepository carrera;
+    
+    //@Autowired
+    //private JugadorRepository jugador;
     
     /**
      * Crear la carrera en la base de datos
@@ -44,7 +48,7 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras{
     @Override
     public void iniciarCarrera(String tipo,String clima, int numeroVueltas) throws ExcepcionServiciosCarreras{
         try{
-            carrera.crearCarrera(new Carrera(tipo, clima, numeroVueltas));
+            carrera.save(new Carrera(tipo, clima, numeroVueltas));
         }catch(PersistenceException e){
             throw new ExcepcionServiciosCarreras(e.getMessage());
         }catch(Exception e){
@@ -64,7 +68,7 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras{
     @Override
     public void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int idAutomovil, String idCarrera) throws ExcepcionServiciosCarreras{
         try{
-            jugador.actualizarJugador(new Jugador(usuario, idCarrera, puntos, posicion, tiempo, idAutomovil, idCarrera));
+            //jugador.updateJugador(new Jugador(usuario, idCarrera, puntos, posicion, tiempo, idAutomovil, idCarrera));
         }catch(PersistenceException e){
             throw new ExcepcionServiciosCarreras(e.getMessage());
         }catch(Exception e){
@@ -83,7 +87,7 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras{
     @Override
     public void actualizarEstrategia(int idEstrategia, String estilo, String llanta, String aerodinamico, String trasmision ) throws ExcepcionServiciosCarreras{
         try{
-            estrategia.actualizarEstrategia(new Estrategia(idEstrategia, llanta, aerodinamico, trasmision, estilo));
+            //estrategia.updateEstrategia(new Estrategia(idEstrategia, llanta, aerodinamico, trasmision, estilo));
         }catch(PersistenceException e){
             throw new ExcepcionServiciosCarreras(e.getMessage());
         }catch(Exception e){
@@ -110,6 +114,16 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras{
             throw new ExcepcionServiciosCarreras("Error inesperado al consultar los jugadores de la carrera "+identificador);
         }
         return jugadores;
+    }
+    
+    @Override
+    public Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras{
+        return carrera.findByIdentificador(identificador);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("ENTRA");
     }
 
 }

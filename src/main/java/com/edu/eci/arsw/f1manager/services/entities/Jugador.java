@@ -5,12 +5,15 @@
  */
 package com.edu.eci.arsw.f1manager.services.entities;
 
+import org.springframework.data.annotation.Id;
+
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
 public class Jugador {
     
+    @Id
     private String usuario;
     private String contrasena;
     private int puntos;

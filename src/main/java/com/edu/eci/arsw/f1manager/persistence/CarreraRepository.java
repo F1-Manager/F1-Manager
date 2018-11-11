@@ -5,13 +5,13 @@
  */
 package com.edu.eci.arsw.f1manager.persistence;
 
-import com.edu.eci.arsw.f1manager.services.entities.Automovil;
+import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import org.apache.ibatis.exceptions.PersistenceException;
-
+import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
-public interface AutomovilDAO {
-    public void actualizarAutomovil(Automovil automovil) throws PersistenceException;
+public interface CarreraRepository extends MongoRepository<Carrera, String>{
+    public Carrera findByIdentificador(String identificador) throws PersistenceException;
 }

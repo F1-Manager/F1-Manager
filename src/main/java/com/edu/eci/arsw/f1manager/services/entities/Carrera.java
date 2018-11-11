@@ -5,14 +5,15 @@
  */
 package com.edu.eci.arsw.f1manager.services.entities;
 
-import java.util.ArrayList;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
 public class Carrera {
-    
+
+    @Id
     private String identificador;
     private String clima;
     private int numeroVueltas;

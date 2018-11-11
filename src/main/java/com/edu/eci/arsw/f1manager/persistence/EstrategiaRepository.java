@@ -5,13 +5,13 @@
  */
 package com.edu.eci.arsw.f1manager.persistence;
 
-import com.edu.eci.arsw.f1manager.services.entities.Carrera;
+import com.edu.eci.arsw.f1manager.services.entities.Estrategia;
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
-public interface CarreraDAO {
-    public void crearCarrera(Carrera carrera) throws PersistenceException;
-    public Carrera consultarCarreraPorIdentificador(String identificador) throws PersistenceException;
+public interface EstrategiaRepository extends MongoRepository<Estrategia, Integer>{
+    //public void saveEstrategia(Estrategia estrategia) throws PersistenceException;
 }

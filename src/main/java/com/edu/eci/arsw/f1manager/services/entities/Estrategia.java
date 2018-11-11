@@ -5,12 +5,15 @@
  */
 package com.edu.eci.arsw.f1manager.services.entities;
 
+import org.springframework.data.annotation.Id;
+
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
 public class Estrategia {
     
+    @Id
     private int idEstrategia;
     private String llanta;
     private String aerodinamico;

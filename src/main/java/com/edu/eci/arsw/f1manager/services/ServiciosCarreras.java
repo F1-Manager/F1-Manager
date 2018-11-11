@@ -5,6 +5,7 @@
  */
 package com.edu.eci.arsw.f1manager.services;
 
+import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
 import java.util.ArrayList;
 
@@ -18,4 +19,5 @@ public interface ServiciosCarreras {
     void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int idAutomovil, String idCarrera) throws ExcepcionServiciosCarreras;
     void actualizarEstrategia(int idEstrategia, String estilo, String llanta, String aerodinamico, String trasmision ) throws ExcepcionServiciosCarreras;
     ArrayList<Jugador> consultarCarrera(String identificador) throws ExcepcionServiciosCarreras;
+    Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras;
 }

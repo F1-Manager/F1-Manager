@@ -5,12 +5,15 @@
  */
 package com.edu.eci.arsw.f1manager.services.entities;
 
+import org.springframework.data.annotation.Id;
+
 /**
  *
  * @author danielagonzalez-dianasanchez
  */
 public class Automovil {
     
+    @Id
     private int idAutomovil;
     private String color;
     private int aceleracion;
