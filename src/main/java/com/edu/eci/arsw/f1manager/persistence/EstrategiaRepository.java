@@ -14,4 +14,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface EstrategiaRepository extends MongoRepository<Estrategia, Integer>{
     //public void saveEstrategia(Estrategia estrategia) throws PersistenceException;
+    public Estrategia findByIdEstrategia(int idEstrategia) throws PersistenceException;
 }

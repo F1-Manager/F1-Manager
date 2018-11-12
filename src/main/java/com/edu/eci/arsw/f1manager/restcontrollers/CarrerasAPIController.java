@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,17 +33,59 @@ public class CarrerasAPIController {
     @Autowired
     private ServiciosCarreras servicios;
     
-    @RequestMapping(method = RequestMethod.GET, value = "{identificador}")
-    public ResponseEntity<?> obtenerJugadoresPorCarrera(@PathVariable("identificador") String identificador){
+    @RequestMapping(method = RequestMethod.PUT, value = "{identificador}/{clima}/{numVueltas}")
+    public ResponseEntity<?> crearCarrera(@PathVariable("identificador") String identificador, @PathVariable("clima") String clima, @PathVariable("numVueltas") int numVueltas){
         try {
-            servicios.iniciarCarrera("cl2", "Lluvia", 5);
-            //ArrayList<Jugador> jugadores = servicios.consultarCarrera(identificador);
-            Carrera carrera = servicios.consultarCarreraPorIdentificador(identificador);
-            System.out.println("Carrera "+carrera.getIdentificador()+","+carrera.getClima()+","+carrera.getNumeroVueltas());
-            return new ResponseEntity<>(carrera, HttpStatus.ACCEPTED);
+            servicios.iniciarCarrera(identificador, clima, numVueltas);
+            return new ResponseEntity<>("Race created", HttpStatus.ACCEPTED);
         } catch (ExcepcionServiciosCarreras ex) {
+            Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value ="/jugador/{id}")
+    public ResponseEntity<?> obtenerJugadorPorIdentificador(@PathVariable("id") String id){
+        try{
+            return new ResponseEntity<>(servicios.consultarJugadorPorUsuario(id),HttpStatus.ACCEPTED);
+        } catch (ExcepcionServiciosCarreras ex){
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+    
+    @RequestMapping(method = RequestMethod.PUT, value = "/estrategia/{idEstrategia}/{llanta}/{aerodinamico}/{transmision}/{estilo}")
+    public ResponseEntity<?> crearEstrategia(@PathVariable("idEstrategia") int idEstrategia, @PathVariable("llanta") String llanta, @PathVariable("aerodinamico") String aerodinamico, @PathVariable("transmision") String transmision, @PathVariable("estilo") String estilo){
+        try{
+            servicios.guardarEstrategia(idEstrategia, llanta, aerodinamico, transmision, estilo);
+            return new ResponseEntity<>("Estrategy created",HttpStatus.ACCEPTED);
+        }catch (ExcepcionServiciosCarreras ex){
+            Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT, value = "/jugador/{usuario}/{contrasena}/{puntos}/{posicion}/{tiempo}/{automovil}/{idEstrategia}/{idCarrera}")
+    public ResponseEntity<?> crearJugador(@PathVariable("usuario") String usuario, @PathVariable("contrasena") String contrasena, @PathVariable("puntos") int puntos, @PathVariable("posicion") int posicion, @PathVariable("tiempo") float tiempo, @PathVariable("automovil") int automovil, @PathVariable("idEstrategia") int idEstrategia, @PathVariable("idCarrera") String idCarrera){
+        try{
+            servicios.crearJugador(usuario, contrasena, puntos, posicion, tiempo, automovil, idEstrategia, idCarrera);
+            return new ResponseEntity<>("Player created", HttpStatus.ACCEPTED);
+        }catch (ExcepcionServiciosCarreras ex){
+            Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarJugador(@RequestBody Jugador jugador){
+        try{
+            servicios.actualizarJugador(jugador.getUsuario(), jugador.getPuntos(), jugador.getPosicion(), jugador.getTiempo(), jugador.getAutomovil(), jugador.getEstrategia(), jugador.getIdCarrera());
+            return new ResponseEntity<>("Player updated", HttpStatus.ACCEPTED);
+        }catch (ExcepcionServiciosCarreras ex){
+            Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+        }
+    }
+    
+    
 }

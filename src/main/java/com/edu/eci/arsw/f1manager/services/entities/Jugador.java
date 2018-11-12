@@ -19,31 +19,20 @@ public class Jugador {
     private int puntos;
     private int posicion;
     private float tiempo;
-    private int idAutomovil;
-    private Estrategia estrategia;
+    private int automovil;
+    private int estrategia;
     private String idCarrera;
 
-    public Jugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int automovil, Estrategia estrategia, String idCarrera) {
+    public Jugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.puntos = puntos;
         this.posicion = posicion;
         this.tiempo = tiempo;
-        this.idAutomovil = automovil;
+        this.automovil = automovil;
         this.estrategia = estrategia;
         this.idCarrera = idCarrera;
-    }
-
-    public Jugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int idAutomovil, String idCarrera) {
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.puntos = puntos;
-        this.posicion = posicion;
-        this.tiempo = tiempo;
-        this.idAutomovil = idAutomovil;
-        this.idCarrera = idCarrera;
-    }
-    
+    }    
     
     public String getIdCarrera() {
         return idCarrera;
@@ -93,19 +82,19 @@ public class Jugador {
         this.tiempo = tiempo;
     }
 
-    public int getIdAutomovil() {
-        return idAutomovil;
+    public int getAutomovil() {
+        return automovil;
     }
 
-    public void setIdAutomovil(int idAutomovil) {
-        this.idAutomovil = idAutomovil;
+    public void setAutomovil(int idAutomovil) {
+        this.automovil = idAutomovil;
     }
     
-    public Estrategia getEstrategia() {
+    public int getEstrategia() {
         return estrategia;
     }
 
-    public void setEstrategia(Estrategia estrategia) {
+    public void setEstrategia(int estrategia) {
         this.estrategia = estrategia;
     }
     
