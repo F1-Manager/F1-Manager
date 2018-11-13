@@ -132,21 +132,25 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
     @Override
     public Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras{
         return carrera.findByIdentificador(identificador);
+        
     }
     
     @Override
     public Jugador consultarJugadorPorUsuario(String usuario) throws ExcepcionServiciosCarreras{
-        return jugador.findByUsuario(usuario);
+        if (jugador.findByUsuario(usuario)!=null){
+            return jugador.findByUsuario(usuario);
+        }
+        throw new ExcepcionServiciosCarreras(usuario+" does not exist");
     }
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("ENTRA");
-        crearJugador("Sebastian","password", 712, 1, 5/3, 3, 3,"cl1");
-        crearJugador("Mateo", "qwerty123", 1030, 2, 6/3, 1, 2, "cl1");
-        guardarEstrategia(3,"Soft","Balanced","Balanced","Balanced");
-        guardarEstrategia(2,"Hard","Straight","Acceleration","Press down");
-        iniciarCarrera("cl1","Lluvia", 4);
+        //crearJugador("Sebastian","password", 712, 1, 5/3, 3, 3,"cl1");
+        //crearJugador("Mateo", "qwerty123", 1030, 2, 6/3, 1, 2, "cl1");
+        //guardarEstrategia(3,"Soft","Balanced","Balanced","Balanced");
+        //guardarEstrategia(2,"Hard","Straight","Acceleration","Press down");
+        //iniciarCarrera("cl1","Lluvia", 4);
     }
 
 }

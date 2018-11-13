@@ -65,10 +65,10 @@ public class CarrerasAPIController {
         }
     }
     
-    @RequestMapping(method = RequestMethod.PUT, value = "/jugador/{usuario}/{contrasena}/{puntos}/{posicion}/{tiempo}/{automovil}/{idEstrategia}/{idCarrera}")
-    public ResponseEntity<?> crearJugador(@PathVariable("usuario") String usuario, @PathVariable("contrasena") String contrasena, @PathVariable("puntos") int puntos, @PathVariable("posicion") int posicion, @PathVariable("tiempo") float tiempo, @PathVariable("automovil") int automovil, @PathVariable("idEstrategia") int idEstrategia, @PathVariable("idCarrera") String idCarrera){
+    @RequestMapping(method = RequestMethod.PUT, value = "/jugador/{usuario}/{contrasena}")
+    public ResponseEntity<?> crearJugador(@PathVariable("usuario") String usuario, @PathVariable("contrasena") String contrasena){
         try{
-            servicios.crearJugador(usuario, contrasena, puntos, posicion, tiempo, automovil, idEstrategia, idCarrera);
+            servicios.crearJugador(usuario, contrasena, 0,0,0,0,0,"");
             return new ResponseEntity<>("Player created", HttpStatus.ACCEPTED);
         }catch (ExcepcionServiciosCarreras ex){
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);

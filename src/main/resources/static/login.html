@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <title>Login</title>
+</head>
+    <body style="background-image:url(img/background.jpg);background-size: cover">
+    <form >
+        
+           <a style="color: ghostwhite;font-weight: bold">login:</a>
+            <input id="username"/>
+
+            <output style="color: ghostwhite;font-weight: bold">Password:</output>
+            <input id="password"/>
+
+            <output style="color: ghostwhite;font-weight: bold">Remember me:</output>
+
+            <output/>
+            <button id="Login" type="button" onClick="LoginControllerModule.doLogin()">Sign in</button>
+            <button id="SignUp" type="button" onClick="LoginControllerModule.register()">Sign up</button>
+        
+       
+
+    </form>
+        
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.js"> <!--integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"--></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="/js/loginController.js"></script>
+    <script src="/js/loginRestController.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
