@@ -6,7 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="https://getbootstrap.com/favicon.ico">
-
+    <link rel="stylesheet" type="text/css" media="all" href="jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" media="all" href="bootstrap.min.css">
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="jquery.minicolors.min.js"></script>
     <title>Customization</title>
 
     <!-- Bootstrap core CSS -->
@@ -61,9 +64,44 @@
 			  
 			  <div id="inlinecolorhex" class="col-md-8">
 			    <h3>Current selection: <small>#4fc8db</small></h3>
+    <p id="color" style="background-color:#4fc8db;">_________</p>
+    
 			  </div>
       </div><!-- @end .row -->
     </div><!-- @end .well -->
+<script type="text/javascript">
+$(function(){
+  var colpick = $('.static').each( function() {
+    $(this).minicolors({
+      control: $(this).attr('data-control') || 'hue',
+      inline: $(this).attr('data-inline') === 'true',
+      letterCase: 'lowercase',
+      opacity: false,
+      change: function(hex, opacity) {
+        if(!hex) return;
+        if(opacity) hex += ', ' + opacity;
+        try {
+          console.log(hex);
+        } catch(e) {}
+        $(this).select();
+      },
+      theme: 'bootstrap'
+    });
+  });
+  
+  var $inlinehex = $('#inlinecolorhex h3 small');
+  var $color = $('#color');
+  $('#inlinecolors').minicolors({
+    inline: true,
+    theme: 'bootstrap',
+    change: function(hex) {
+      if(!hex) return;
+      $inlinehex.html(hex);
+      $color.style="background-color:"+hex;
+    }
+  });
+});
+</script>
     </main>
 
     <footer class="text-muted">
@@ -78,7 +116,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3Store.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <!--<script src="js/jquery-3Store.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="js/popperStore.js"></script>
     <script src="js/bootstrapStore.js"></script>
