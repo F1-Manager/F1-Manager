@@ -1,7 +1,7 @@
 var LoginControllerModule = (function() {
-    var user = document.getElementById("username").value;
-    var password= document.getElementById("password").value;
-    var doLogin= function() {
+    //var user = document.getElementById("username").value;
+    //var password= document.getElementById("password").value;
+    var doLogin= function(user, password) {
         var callback={
             onSuccess: function(player){
                 if (player.contrasena==password){
@@ -17,7 +17,7 @@ var LoginControllerModule = (function() {
         };
         RestControllerModule.getUser(user,callback);
     };
-    var register= function(){
+    var register= function(user, password){
         var callback={
             onSuccess: function(){
                 location.href="http://localhost:8080/index.html";

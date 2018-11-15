@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="img/iconLogin.png">
-    <title>Login</title>
-</head>
-    <body style="background-image:url(img/f1manager.jpg);background-size: auto ">
-    <form >
-        
-        <output style="color: ghostwhite;font-weight: bold">Login:</output>
-        <input id="username" placeholder="Username" required/>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" type="image/png" href="img/iconLogin.png">
+        <title>Login</title>
+        <!-- Bootstrap core CSS -->
+        <link href="js/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="js/sticky-footer-navbar.css" rel="stylesheet">
+    </head>
+    <body style="background-image:url(img/f1manager.jpg);background-size: cover ">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#">F1-Manager</a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <form class="form-inline mt-2 mt-md-0">
+                        <output style="color: ghostwhite;font-weight: bold">Username:</output>
+                        <input id="username" class="form-control mr-sm-2" type="text" placeholder="Username" required/>
 
-        <output style="color: ghostwhite;font-weight: bold">Password:</output>
-        <input id="password" type="password" class="form-control" placeholder="Password" required/>
+                        <output style="color: ghostwhite;font-weight: bold">Password:</output>
+                        <input id="password" type="password" class="form-control" placeholder="Password" required/>
 
-        <button id="Login" type="button" onClick="LoginControllerModule.doLogin()">Sign in</button>
-        <button id="SignUp" type="button" onClick="LoginControllerModule.register()">Sign up</button>
-
-    </form>
+                        <button id="Login" type="button" class="btn btn-outline-secondary my-2 my-sm-0" onClick="LoginControllerModule.doLogin($('#username').val(),cifrar($('#password').val()))">Sign in</button>
+                        <button id="SignUp" type="button" class="btn btn-outline-secondary my-2 my-sm-0" onClick="LoginControllerModule.register($('#username').val(),cifrar($('#password').val()))">Sign up</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
         
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -29,6 +39,14 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/sha256.js"></script>
+    <script type="text/javascript">
+        function cifrar(pass){
+            var hash = sha256.create();
+            hash.update(pass);
+            return hash.hex();
+        }
+    </script>
     <script src="/js/loginController.js"></script>
     <script src="/js/loginRestController.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
