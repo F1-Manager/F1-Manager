@@ -4,7 +4,7 @@ var Game = (function () {
 
     var i = 0;
     var laps=0;
-    var speed = 0.01;
+    var speed = 0.02;
     var startGame = function() {
         myGamePiece = new component(5, "red", 10, 120);
         myGameArea.start();
@@ -43,8 +43,8 @@ var Game = (function () {
             this.x = 240 - (200 * Math.cos(i));
             this.y = 135 + (100 * Math.sin(i));
             
-            console.log("x: " + (240 - (200 * Math.cos(i) )));
-            console.log("y: " + (135 + (100 * Math.sin(i))));
+            // console.log("x: " + (240 - (200 * Math.cos(i) )));
+            // console.log("y: " + (135 + (100 * Math.sin(i))));
             i += speed;
             if(i >= 2*Math.PI) {
                 i = 0;
@@ -67,6 +67,12 @@ var Game = (function () {
         myGameArea.clear();
         myGamePiece.newPos();
         myGamePiece.update();
+        if (speed == 0) {
+            clearInterval(myGameArea.interval);
+            document.getElementById("conserveButton").setAttribute("disabled","true");
+            document.getElementById("balancedButton").setAttribute("disabled","true");
+            document.getElementById("pressDownButton").setAttribute("disabled","true");
+        }
     };
 
     var changeSpeed = function (spd) {
