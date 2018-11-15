@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-<link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <link rel="icon" type="image/png" href="img/iconLogin.png">
     <title>Login</title>
 </head>
-    <body style="background-image:url(img/background.jpg);background-size: cover">
+    <body style="background-image:url(img/f1manager.jpg);background-size: auto ">
     <form >
         
-           <a style="color: ghostwhite;font-weight: bold">login:</a>
-            <input id="username"/>
+        <output style="color: ghostwhite;font-weight: bold">Login:</output>
+        <input id="username" placeholder="Username" required/>
 
-            <output style="color: ghostwhite;font-weight: bold">Password:</output>
-            <input id="password"/>
+        <output style="color: ghostwhite;font-weight: bold">Password:</output>
+        <input id="password" type="password" class="form-control" placeholder="Password" required/>
 
-            <output style="color: ghostwhite;font-weight: bold">Remember me:</output>
-
-            <output/>
-            <button id="Login" type="button" onClick="LoginControllerModule.doLogin()">Sign in</button>
-            <button id="SignUp" type="button" onClick="LoginControllerModule.register()">Sign up</button>
-        
-       
+        <button id="Login" type="button" onClick="LoginControllerModule.doLogin()">Sign in</button>
+        <button id="SignUp" type="button" onClick="LoginControllerModule.register()">Sign up</button>
 
     </form>
         
