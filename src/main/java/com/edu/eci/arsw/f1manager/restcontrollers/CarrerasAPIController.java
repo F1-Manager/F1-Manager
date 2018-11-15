@@ -7,10 +7,7 @@ package com.edu.eci.arsw.f1manager.restcontrollers;
 
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
-import com.edu.eci.arsw.f1manager.services.entities.Carrera;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
-import com.google.gson.Gson;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
