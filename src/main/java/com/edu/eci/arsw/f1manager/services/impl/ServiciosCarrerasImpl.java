@@ -62,13 +62,13 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
      * @param puntos
      * @param posicion
      * @param tiempo
-     * @param idAutomovil
+     * @param automovil
      * @param idCarrera 
      */
     @Override
     public void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera) throws ExcepcionServiciosCarreras{
         try{
-            jugador.save(new Jugador(usuario, jugador.findByUsuario(usuario).getContrasena(), puntos, posicion, tiempo, automovil, estrategia, idCarrera));
+            jugador.save(new Jugador(usuario, jugador.findByUsuario(usuario).getContrasena(), jugador.findByUsuario(usuario).getCorreo(), jugador.findByUsuario(usuario).getFechaNacimiento(), jugador.findByUsuario(usuario).getGenero(), puntos, posicion, tiempo, automovil, estrategia, idCarrera));
         }catch(PersistenceException e){
             throw new ExcepcionServiciosCarreras(e.getMessage());
         }catch(Exception e){
@@ -117,12 +117,12 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
     }
 
     @Override
-    public void crearJugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int automovil, int idEstrategia, String idCarrera) throws ExcepcionServiciosCarreras{
+    public void crearJugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, int puntos, int posicion, float tiempo, int automovil, int idEstrategia, String idCarrera) throws ExcepcionServiciosCarreras{
         if (jugador.findByUsuario(usuario) == null){
             if (contrasena.length()< 8){
                 throw new ExcepcionServiciosCarreras("Your password must be at least eigth characters long");
             }
-            jugador.save(new Jugador(usuario, contrasena, puntos, posicion, tiempo, automovil, idEstrategia, idCarrera));
+            jugador.save(new Jugador(usuario, contrasena, correo, fechaNacimiento, genero, puntos, posicion, tiempo, automovil, idEstrategia, idCarrera));
         }else{
             throw new ExcepcionServiciosCarreras(usuario+" is not available");
         }

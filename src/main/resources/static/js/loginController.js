@@ -17,7 +17,7 @@ var LoginControllerModule = (function() {
         };
         RestControllerModule.getUser(user,callback);
     };
-    var register= function(user, password){
+    var register= function(user, password, email, date, gender){
         var callback={
             onSuccess: function(){
                 location.href="http://localhost:8080/index.html";
@@ -27,12 +27,15 @@ var LoginControllerModule = (function() {
                 alert("User has not been created"); 
             }
         };
-        RestControllerModule.putUser(user, password, callback);
+        RestControllerModule.putUser(user, password, email, date, gender, callback);
     }
+
     return {
         doLogin:doLogin,
         register:register
     };
     
 })();
+
+
 

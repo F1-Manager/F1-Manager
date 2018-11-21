@@ -22,5 +22,5 @@ public interface ServiciosCarreras {
     Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras;
     Jugador consultarJugadorPorUsuario(String usuario) throws ExcepcionServiciosCarreras;
 
-    public void crearJugador(String usuario, String contrasena, int puntos, int posicion, float tiempo, int automovil, int idEstrategia, String idCarrera) throws ExcepcionServiciosCarreras;
+    public void crearJugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, int puntos, int posicion, float tiempo, int automovil, int idEstrategia, String idCarrera) throws ExcepcionServiciosCarreras;
 }

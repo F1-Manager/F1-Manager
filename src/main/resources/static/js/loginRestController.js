@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 var RestControllerModule = (function () {
-    var putUser = function (user,passwd, callback){
-        axios.put('/races/jugador/'+user+'/'+passwd)
+    var putUser = function (user, passwd, email, date, gender, callback){
+        axios.put('/races/jugador/'+user+'/'+passwd+'/'+email+'/'+date+'/'+gender)
                 .then(function(user){
                     callback.onSuccess(user.data);
                     console.log("User received");
@@ -13,7 +13,7 @@ var RestControllerModule = (function () {
                 .catch(function(error){
                     callback.onFailed(error);
                     console.log(error);
-                     alert("There is a problem with our servers. We apologize for the inconvince, please try again later");
+                    alert("There is a problem with our servers. We apologize for the inconvince, please try again later");
                 });
     };
     var getUser = function (user, callback){

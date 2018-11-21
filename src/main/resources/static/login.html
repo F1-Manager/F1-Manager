@@ -13,24 +13,65 @@
         <!-- Custom styles for this template -->
         <link href="js/sticky-footer-navbar.css" rel="stylesheet">
     </head>
-    <body style="background-image:url(img/f1manager.jpg);background-size: cover ">
+    <body style="background-image:url(img/f1manager.jpg);background-size: cover">
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <a class="navbar-brand" href="#">F1-Manager</a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <form class="form-inline mt-2 mt-md-0">
-                        <output style="color: ghostwhite;font-weight: bold">Username:</output>
-                        <input id="username" class="form-control mr-sm-2" type="text" placeholder="Username" required/>
-
-                        <output style="color: ghostwhite;font-weight: bold">Password:</output>
-                        <input id="password" type="password" class="form-control" placeholder="Password" required/>
-
-                        <button id="Login" type="button" class="btn btn-outline-secondary my-2 my-sm-0" onClick="LoginControllerModule.doLogin($('#username').val(),cifrar($('#password').val()))">Sign in</button>
-                        <button id="SignUp" type="button" class="btn btn-outline-secondary my-2 my-sm-0" onClick="LoginControllerModule.register($('#username').val(),cifrar($('#password').val()))">Sign up</button>
+                        <output style="color: whitesmoke;font-weight: bold">Username: &nbsp;</output>
+                        <input id="username" class="form-control mr-sm-2" type="text" placeholder="Enter your user" required/>
+                        <output style="color: whitesmoke;font-weight: bold">Password: &nbsp;</output>
+                        <input id="password" type="password" class="form-control" placeholder="Enter your password" required/>&nbsp;
+                        <button type="button" class="btn btn-outline-secondary my-2 my-sm-0" onClick="LoginControllerModule.doLogin($('#username').val(),cifrar($('#password').val()))">Sign in</button>
+                        <output style="color: ghostwhite;font-weight: bold"> &nbsp; or &nbsp;</output>
+                        <button type="button" class="btn btn-outline-secondary my-2 my-sm-0" onclick="show()">Sign up</button>
                     </form>
                 </div>
             </nav>
         </header>
+
+        <!--div id="login" class="container" style="visibility: hidden">
+            <div class="col-sm-8 col-md-6 setup-form-container">
+                <h3 style="color: whitesmoke"><b>Sign in to F1-Manager</b></h3>
+                <output style="color: whitesmoke;font-weight: bold">Username</output>
+                <input id="username" class="form-control mr-sm-2" type="text" placeholder="Enter your user" required/><br>
+                <output style="color: whitesmoke;font-weight: bold">Password</output>
+                <input id="password" type="password" class="form-control" placeholder="Enter your password" required/><br>
+                <button type="button" class="btn btn-success my-2 my-sm-0" onClick="LoginControllerModule.doLogin($('#username').val(),cifrar($('#password').val()))">Sign in</button>
+            </div>
+        </div-->
+
+        <div id="register" class="container" style="visibility: hidden">
+            <div class="col-sm-8 col-md-6 setup-form-container">
+                <h3 style="color: whitesmoke"><b>Create your account</b></h3>
+                <!--Username-->
+                <output style="color: whitesmoke"><b>Username</b></output>
+                <input id="user" class="form-control mr-sm-2" type="text" placeholder="Pick a username" required/><br>
+                <!--Password-->
+                <output style="color: whitesmoke"><b>Password</b></output>
+                <input id="passwd" class="form-control mr-sm-2" type="password" placeholder="Create a password" required><br>
+                <!--Email-->
+                <output style="color: whitesmoke"><b>Email</b></output>
+                <input id="email" class="form-control mr-sm-2" type="email" placeholder="you@example.com" required><br>
+                <!--Date-->
+                <output style="color: whitesmoke"><b>Date of birth</b></output>
+                <input id="date" class="form-control mr-sm-2" type="date" placeholder="Choose your date of birth" required><br>
+                <!--Gender-->
+                <h6 style="color: whitesmoke"><b>Gender</b></h6>
+                <div id="gender" class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="male" class="custom-control-input" type="radio" name="gender" value="Male" required checked>
+                        <label class="custom-control-label" style="color: whitesmoke" for="male">Male</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="female" class="custom-control-input" type="radio" name="gender" value="Female" required>
+                        <label class="custom-control-label" style="color: whitesmoke" for="female">Female</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success my-2 my-sm-0" onclick="LoginControllerModule.register($('#user').val(),cifrar($('#passwd').val()),$('#email').val(),$('#date').val(),$('input[name=gender]:checked').val())">Create an account</button>
+            </div>
+        </div>
         
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -45,6 +86,18 @@
             var hash = sha256.create();
             hash.update(pass);
             return hash.hex();
+        }
+    </script>
+    <script type="text/javascript">
+        function show() {
+            var form = document.getElementById("register");
+            form.style.visibility = "visible";
+        }
+    </script>
+    <script type="text/javascript">
+        function login() {
+            var form = document.getElementById("login");
+            form.style.visibility = "visible";
         }
     </script>
     <script src="/js/loginController.js"></script>

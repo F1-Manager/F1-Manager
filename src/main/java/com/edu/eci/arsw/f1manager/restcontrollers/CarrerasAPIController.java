@@ -62,10 +62,10 @@ public class CarrerasAPIController {
         }
     }
     
-    @RequestMapping(method = RequestMethod.PUT, value = "/jugador/{usuario}/{contrasena}")
-    public ResponseEntity<?> crearJugador(@PathVariable("usuario") String usuario, @PathVariable("contrasena") String contrasena){
+    @RequestMapping(method = RequestMethod.PUT, value = "/jugador/{usuario}/{contrasena}/{correo}/{fechaNacimiento}/{genero}")
+    public ResponseEntity<?> crearJugador(@PathVariable("usuario") String usuario, @PathVariable("contrasena") String contrasena, @PathVariable("correo") String correo, @PathVariable("fechaNacimiento") String fechaNacimiento, @PathVariable("genero") String genero ){
         try{
-            servicios.crearJugador(usuario, contrasena, 0,0,0,0,0,"");
+            servicios.crearJugador(usuario, contrasena, correo, fechaNacimiento, genero,0,0,0,0,0,"");
             return new ResponseEntity<>("Player created", HttpStatus.ACCEPTED);
         }catch (ExcepcionServiciosCarreras ex){
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);
