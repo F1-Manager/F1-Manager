@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="./css/race.css">
+        <title>F1-Manager</title>
+    </head>
+    <body onload="Game.startGame()">
+        <h1>Driving Style</h1>
+        <div style="text-align:center;width:480px;">
+            <button id="conserveButton" onclick="Game.changeSpeed(0.01)">Conserve</button><br><br>
+            <button id="balancedButton" onclick="Game.changeSpeed(0.02)">Balanced</button><br><br>
+            <button id="pressDownButton" onclick="Game.changeSpeed(0.03)">Press down</button>
+        </div>
+
+    <!-- Scritps -->
+    <script src="./js/race.js"></script>
+    </body>
+</html>
