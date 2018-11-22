@@ -5,7 +5,7 @@ var LoginControllerModule = (function() {
         var callback={
             onSuccess: function(player){
                 if (player.contrasena==password){
-                    location.href="http://localhost:8080/race.html";
+                    location.href="https://f1-manager.herokuapp.com//race.html";
                 }else {
                     alert("Username or password incorrect"); 
                 }
@@ -20,7 +20,7 @@ var LoginControllerModule = (function() {
     var register= function(user, password, email, date, gender){
         var callback={
             onSuccess: function(){
-                location.href="http://localhost:8080/race.html";
+                location.href="https://f1-manager.herokuapp.com//race.html";
             },
             onFailed: function(exception){
                 console.log(exception);
