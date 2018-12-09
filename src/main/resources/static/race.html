@@ -8,7 +8,20 @@
     </head>
     <body onload="Game.startGame()">
         <div>
-            <button onclick="Game.hide()">Strategy</button>
+            <table id="info" class="table table-light color" hidden>
+                <thead>
+                    <tr>
+                        <th>Posicion</th>
+                        <th>Piloto</th>
+                        <th>Llantas</th>
+                        <th>Diferencia</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div>
+            <button onclick="Game.hide('cont')">Strategy</button>
+            <button onclick="Game.table(); Game.hide('info')">Table</button>
         </div>
         <!--<h1>Driving Style</h1>-->
 

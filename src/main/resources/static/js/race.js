@@ -87,19 +87,75 @@ var Game = (function () {
         selection.classList.add("btn-primary");
     };
 
-    var hide = function () {
-        var container = document.getElementById("cont");
+    var hide = function (id) {
+        var container = document.getElementById(id);
         if(container.hasAttribute("hidden")) {
             container.removeAttribute("hidden");
         } else {
             container.setAttribute("hidden", "true");
         }
     };
+    var table = function(){
+        // Crea un elemento <table> y un elemento <tbody>
+        var tabla   = document.getElementById("info")
+//        var tblBody = document.createElement("tbody");
 
+        // Crea las celdas
+        for (var i = 0; i < 2; i++) {
+          // Crea las hileras de la tabla
+            var hilera = document.createElement("tr");
+            
+            var celda = document.createElement("td");
+            var posicion = document.createTextNode("1");
+            celda.appendChild(posicion);
+            hilera.appendChild(celda);
+            
+            var cell2 = document.createElement("td");
+            var piloto = document.createTextNode("sebastian");
+            cell2.appendChild(piloto);
+            hilera.appendChild(cell2);
+            
+            var cell = document.createElement("td");
+            var llanta = document.createTextNode("mojada");
+            cell.appendChild(llanta);
+            hilera.appendChild(cell);
+            
+            var cell3 = document.createElement("td");
+            var diferencia = document.createTextNode("5");
+            cell3.appendChild(diferencia);
+            hilera.appendChild(cell3);
+
+          // agrega la hilera al final de la tabla (al final del elemento tblbody)
+          tabla.appendChild(hilera);
+        }
+
+        // posiciona el <tbody> debajo del elemento <table>
+//        tabla.appendChild(tblBody);
+
+        // modifica el atributo "border" de la tabla y lo fija a "2";
+        tabla.setAttribute("border", "2");
+//        var tb = document.getElementById("info");
+//        for (var r = 0; r < 2; r++) {
+//                var row = document.createElement("tr");
+
+                 // create cells in row
+                 //document.createTextNode(Math.floor(Math.random() * (10 - 1 + 1)) + 1);
+//                var columna = document.createElement("td");
+//                var posicion = r;
+//                var piloto = "Sebastian"
+//                var llantas= "malvadisco"
+//                var diferencia="4"
+//                columna.appendChild(posicion,piloto,llantas,diferencia);
+//                row.appendChild(columna);
+//
+//            tb.appendChild(row); // add the row to the end of the table body
+        
+    }
     return {
         startGame:startGame,
         changeSpeed:changeSpeed,
         changeColor:changeColor,
-        hide:hide
+        hide:hide,
+        table:table
     }
 })();
