@@ -98,8 +98,13 @@ var Game = (function () {
     var table = function(){
         // Crea un elemento <table> y un elemento <tbody>
         var tabla   = document.getElementById("info");
-        $("#info tbody").html('');
-//        var tblBody = document.createElement("tbody");
+        // $("#info tbody").html('');
+       // console.log(tabla.childNodes);
+       if(document.getElementById("tblBody") != null) {
+           tabla.removeChild(document.getElementById("tblBody"));
+       }
+        var tblBody = document.createElement("tbody");
+       tblBody.setAttribute("id","tblBody");
         // Crea las celdas
         for (var i = 0; i < 2; i++) {
           // Crea las hileras de la tabla
@@ -126,11 +131,11 @@ var Game = (function () {
             hilera.appendChild(cell3);
 
           // agrega la hilera al final de la tabla (al final del elemento tblbody)
-          tabla.appendChild(hilera);
+          tblBody.appendChild(hilera);
         }
 
         // posiciona el <tbody> debajo del elemento <table>
-//        tabla.appendChild(tblBody);
+       tabla.appendChild(tblBody);
 
         // modifica el atributo "border" de la tabla y lo fija a "2";
         tabla.setAttribute("border", "2");
