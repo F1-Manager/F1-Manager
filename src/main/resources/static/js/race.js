@@ -97,9 +97,9 @@ var Game = (function () {
     };
     var table = function(){
         // Crea un elemento <table> y un elemento <tbody>
-        var tabla   = document.getElementById("info")
+        var tabla   = document.getElementById("info");
+        $("#info tbody").html('');
 //        var tblBody = document.createElement("tbody");
-
         // Crea las celdas
         for (var i = 0; i < 2; i++) {
           // Crea las hileras de la tabla
