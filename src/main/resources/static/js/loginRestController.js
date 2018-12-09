@@ -27,10 +27,24 @@ var RestControllerModule = (function () {
                     console.log(error);
                 });
     };
+    var postUser = function (player,callbackPost){
+        axios.post('/races',player)
+                .then(function(response){
+                    callbackPost.onSuccess(response.data);
+                    console.log("Player updated");
+                })
+                .catch(function(error){
+                    console.log(player);
+                    callbackPost.onFailed(error.data);
+                    console.log("Unexpected error");
+                });
+    };
+    
     
     return {
         putUser:putUser,
-        getUser:getUser
+        getUser:getUser,
+        postUser:postUser
     };
 })();
  

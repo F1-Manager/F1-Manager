@@ -10,10 +10,10 @@
     <title>Select team</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="js/bootstrapStore.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="js/albumStore.css" rel="stylesheet">
+    <link href="css/albumStore.css" rel="stylesheet">
   </head>
 
   <body>
@@ -70,7 +70,7 @@
                   <p class="card-text">Mercedes</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team1.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                   <p class="card-text">Ferrari</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team2.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
                   <p class="card-text">Red Bull Racing</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team3.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@
                   <p class="card-text">Renault</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team4.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -129,7 +129,7 @@
                   <p class="card-text">Haas</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team4.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -143,7 +143,7 @@
                   <p class="card-text">McLaren</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team5.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -158,7 +158,7 @@
                   <p class="card-text">Force India</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary " onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary " onclick='ProfileControllerModule.selectTeam("img/team6.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -173,7 +173,7 @@
                   <p class="card-text">Sauber</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team7.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -187,7 +187,7 @@
                   <p class="card-text">Toro Rosso</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team9.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -203,7 +203,7 @@
                   <p class="card-text">Williams</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='http://localhost:8080/customization.html'">Select</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onclick='ProfileControllerModule.selectTeam("img/team10.jpg")'>Select</button>
                     </div>
                   </div>
                 </div>
@@ -227,11 +227,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3Store.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="js/popperStore.js"></script>
-    <script src="js/bootstrapStore.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/holderStore.js"></script>
+    <script src="/js/profileController.js"></script>
+    <script src="/js/loginRestController.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   
 
 <svg xmlns="http://www.w3.org/2000/svg" width="208" height="225" viewBox="0 0 208 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="11" style="font-weight:bold;font-size:11pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body></html>

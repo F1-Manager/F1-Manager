@@ -8,8 +8,16 @@ package com.edu.eci.arsw.f1manager.restcontrollers;
 import com.edu.eci.arsw.f1manager.services.ExcepcionServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.ServiciosCarreras;
 import com.edu.eci.arsw.f1manager.services.entities.Jugador;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/races")
-public class CarrerasAPIController {
-    
+public class CarrerasAPIController extends HttpServlet {
     @Autowired
     private ServiciosCarreras servicios;
     
@@ -76,7 +83,7 @@ public class CarrerasAPIController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> actualizarJugador(@RequestBody Jugador jugador){
         try{
-            servicios.actualizarJugador(jugador.getUsuario(), jugador.getPuntos(), jugador.getPosicion(), jugador.getTiempo(), jugador.getAutomovil(), jugador.getEstrategia(), jugador.getIdCarrera());
+            servicios.actualizarJugador(jugador.getUsuario(), jugador.getPuntos(), jugador.getPosicion(), jugador.getTiempo(), jugador.getAutomovil(), jugador.getEstrategia(), jugador.getIdCarrera(), jugador.getEquipo());
             return new ResponseEntity<>("Player updated", HttpStatus.ACCEPTED);
         }catch (ExcepcionServiciosCarreras ex){
             Logger.getLogger(CarrerasAPIController.class.getName()).log(Level.SEVERE, null, ex);

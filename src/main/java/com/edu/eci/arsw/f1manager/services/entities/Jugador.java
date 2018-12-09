@@ -19,6 +19,7 @@ public class Jugador {
     private String correo;
     private String fechaNacimiento;
     private String genero;
+    private String equipo;
     private int puntos;
     private int posicion;
     private float tiempo;
@@ -26,19 +27,20 @@ public class Jugador {
     private int estrategia;
     private String idCarrera;
 
-    public Jugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera) {
+    public Jugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, String equipo, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.correo = correo;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
+        this.equipo = equipo;
         this.puntos = puntos;
         this.posicion = posicion;
         this.tiempo = tiempo;
         this.automovil = automovil;
         this.estrategia = estrategia;
         this.idCarrera = idCarrera;
-    }    
+    }
     
     public String getIdCarrera() {
         return idCarrera;
@@ -102,6 +104,14 @@ public class Jugador {
 
     public void setEstrategia(int estrategia) {
         this.estrategia = estrategia;
+    }
+
+    public String getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
     }
 
     public String getCorreo() { return correo; }
