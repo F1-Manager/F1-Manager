@@ -7,7 +7,8 @@
         <title>F1-Manager</title>
     </head>
     <body onload="Game.startGame()">
-        <div>
+        <div class="row">
+            <div class="col-sm-6">
             <table id="info" class="table table-light color" hidden>
                 <thead>
                     <tr>
@@ -18,17 +19,21 @@
                     </tr>
                 </thead>
             </table>
+            </div>
         </div>
-        <div>
-            <button onclick="Game.hide('cont')">Strategy</button>
-            <button onclick="Game.table(); Game.hide('info')">Table</button>
+        <div class="row">
+            <div class="col-sm-6">
+                <button onclick="Game.hide('cont')">Strategy</button>
+                <button onclick="Game.table(); Game.hide('info')">Table</button>
+            </div>
         </div>
         <!--<h1>Driving Style</h1>-->
 
         <div id="cont" class="container" hidden>
+            <div class="row">
             <h2 class="title">Driving Style</h2>
             <div class="panel panel-default">
-                <table class="table table-dark color">
+                <table class="table">
                     <thead>
                     <tr>
                         <th class="option" scope="col">Select Option</th>
@@ -66,7 +71,9 @@
                 </table>
             </div>
             <!--<button type="button" class="btn btn-primary">Back</button>-->
+            </div>
         </div>
+        
         <!--<button  onClick="window.open('http://localhost:8080/strategyRace.html');">Strategy</button>-->
         <!--<div style="text-align:center;width:480px;">-->
             <!--<button id="conserveButton" onclick="Game.changeSpeed(0.01)">Conserve</button><br><br>-->

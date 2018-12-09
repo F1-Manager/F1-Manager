@@ -95,6 +95,32 @@ var Game = (function () {
             container.setAttribute("hidden", "true");
         }
     };
+    
+    var connectAndSubscribe = function (topic) {
+        
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        stompClient = Stomp.over(socket);
+        
+        //subscribe to /topic/TOPICXX when connections succeed
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            
+            stompClient.subscribe('/topic/newpoint'+topic, function (eventbody) {
+                var theObject=JSON.parse(eventbody.body);
+                //alert("Nuevo punto: "+theObject.x+" "+theObject.y);
+                addPointToCanvas(new Point(theObject.x,theObject.y));
+            });
+            stompClient.subscribe('/topic/newpolygon'+topic, function (eventbody) {
+                var theObject=JSON.parse(eventbody.body);
+                //alert("Nuevo polygon: "+theObject[3].x+" "+theObject[3].y);
+                addPolygonToCanvas(theObject);
+            });
+        });
+
+    };
+    
+    
     var table = function(){
         // Crea un elemento <table> y un elemento <tbody>
         var tabla   = document.getElementById("info");
