@@ -30,7 +30,7 @@ var ProfileControllerModule =(function(){
     
     var changeTeam= function(){
         var user = window.location.search.substring(1);
-        location.href="http://localhost:8080/team.html"+"?"+user;
+        location.href="https://f1-manager.herokuapp.com/team.html"+"?"+user;
     };
     var selectTeam= function(img){
         console.log(img);
@@ -56,7 +56,7 @@ var ProfileControllerModule =(function(){
         var callbackPost={
             onSuccess: function(response){
                 console.log(response);
-                location.href="http://localhost:8080/profile.html"+"?"+player.usuario;
+                location.href="https://f1-manager.herokuapp.com/profile.html"+"?"+player.usuario;
             },
             onFailed: function(exception){
                 console.log(exception);
