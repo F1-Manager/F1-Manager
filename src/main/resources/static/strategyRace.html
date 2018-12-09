@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./css/race.css">
-        <title>F1-Manager</title>
+        <link rel="stylesheet" href="./css/strategyRace.css">
     </head>
-    <body onload="Game.startGame()">
-        <div>
-            <button onclick="Game.hide()">Strategy</button>
-        </div>
-        <!--<h1>Driving Style</h1>-->
+    <body>
 
-        <div id="cont" class="container" hidden>
+        <div class="container">
             <h2 class="title">Driving Style</h2>
             <div class="panel panel-default">
                 <table class="table table-dark color">
@@ -25,9 +22,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td align="center"><button type="button" class="btn btn-lg" onclick="Game.changeColor(event); Game.changeSpeed(0.01)">Conserve</button></td>
-                        <td align="center"><button type="button" class="btn btn-primary btn-lg" onclick="Game.changeColor(event); Game.changeSpeed(0.02)">Balanced</button></td>
-                        <td align="center"><button type="button" class="btn btn-lg" onclick="Game.changeColor(event); Game.changeSpeed(0.03)">Press Down</button></td>
+                        <td align="center"><button type="button" class="btn btn-lg" onclick="Stetic.changeColor(event)">Conserve</button></td>
+                        <td align="center"><button type="button" class="btn btn-primary btn-lg" onclick="Stetic.changeColor(event)">Balanced</button></td>
+                        <td align="center"><button type="button" class="btn btn-lg" onclick="Stetic.changeColor(event)">Press Down</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -52,18 +49,12 @@
                     </tbody>
                 </table>
             </div>
-            <!--<button type="button" class="btn btn-primary">Back</button>-->
+            <button type="button" class="btn btn-primary">Back</button>
         </div>
-        <!--<button  onClick="window.open('http://localhost:8080/strategyRace.html');">Strategy</button>-->
-        <!--<div style="text-align:center;width:480px;">-->
-            <!--<button id="conserveButton" onclick="Game.changeSpeed(0.01)">Conserve</button><br><br>-->
-            <!--<button id="balancedButton" onclick="Game.changeSpeed(0.02)">Balanced</button><br><br>-->
-            <!--<button id="pressDownButton" onclick="Game.changeSpeed(0.03)">Press down</button>-->
-        <!--</div>-->
 
-        <!-- Scritps -->
+        <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="./js/race.js"></script>
+        <script src="./js/strategyRace.js"></script>
     </body>
 </html>

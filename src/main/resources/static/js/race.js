@@ -79,8 +79,27 @@ var Game = (function () {
         speed = spd;
     };
 
+    var changeColor  = function (event) {
+        console.log(event);
+        var selected = document.getElementsByClassName("btn-primary")[0];
+        var selection = event.srcElement;
+        selected.classList.remove("btn-primary");
+        selection.classList.add("btn-primary");
+    };
+
+    var hide = function () {
+        var container = document.getElementById("cont");
+        if(container.hasAttribute("hidden")) {
+            container.removeAttribute("hidden");
+        } else {
+            container.setAttribute("hidden", "true");
+        }
+    };
+
     return {
         startGame:startGame,
-        changeSpeed:changeSpeed
+        changeSpeed:changeSpeed,
+        changeColor:changeColor,
+        hide:hide
     }
 })();
