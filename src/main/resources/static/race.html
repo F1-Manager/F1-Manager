@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="./css/race.css">
         <title>F1-Manager</title>
     </head>
-    <body onload="Game.connectAndSubscribe(); Game.startGame()">
+    <body onload="Game.connectAndSubscribe(1); Game.startGame()">
         <div class="row">
             <div class="col-sm-6">
             <table id="info" class="table table-light color" hidden>
@@ -84,6 +84,9 @@
         <!-- Scritps -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
         <script src="./js/race.js"></script>
     </body>
 </html>

@@ -2,6 +2,7 @@ var myGamePiece = [];
 
 var Game = (function () {
 
+    var stompClient = null;
     var players = ["Sebastian"];
     var colors = ["red", "blue", "yellow", "green", "pink"];
     var i = 0;
