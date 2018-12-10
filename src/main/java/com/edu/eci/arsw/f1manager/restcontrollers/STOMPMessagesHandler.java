@@ -12,9 +12,9 @@ public class STOMPMessagesHandler {
     @Autowired
     SimpMessagingTemplate msgt;
 
-    @MessageMapping("/newpoint.{numdibujo}")
-    public void handlePointEvent(int pt, @DestinationVariable String numdibujo) throws Exception {
-        System.out.println("Nuevo punto recibido en el servidor!:" + pt);
-        msgt.convertAndSend("/topic/newpoint." + numdibujo, pt);
+    @MessageMapping("/topic/newpoint.{numdibujo}")
+    public void handlePointEvent(@DestinationVariable String player) throws Exception {
+        System.out.println("Nuevo jugador recibido en el servidor!:" + player);
+        msgt.convertAndSend("/topic/newpoint." + player);
     }
 }

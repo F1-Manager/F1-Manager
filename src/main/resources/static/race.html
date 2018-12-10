@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="./css/race.css">
         <title>F1-Manager</title>
     </head>
-    <body onload="Game.connectAndSubscribe(1); Game.startGame()">
+    <body onload="Game.startGame()">
         <div class="row">
             <div class="col-sm-6">
             <table id="info" class="table table-light color" hidden>
@@ -25,6 +25,7 @@
             <div class="col-sm-6">
                 <button onclick="Game.hide('cont')">Strategy</button>
                 <button onclick="Game.table(); Game.hide('info')">Table</button>
+                <button onclick="Game.addPlayer()">add player</button>
             </div>
         </div>
         <!--<h1>Driving Style</h1>-->

@@ -3,20 +3,33 @@ var myGamePiece = [];
 var Game = (function () {
 
     var stompClient = null;
-    var players = ["Sebastian"];
+    var players = [];
     var colors = ["red", "blue", "yellow", "green", "pink"];
     var i = 0;
     var laps=0;
     var speed = 0.02;
     var startGame = function() {
-        while(player.length < 2) {
-            console.log("esperando");
-        }
-        for(var i = 0; i < players.length; i++) {
-            myGamePiece.push(new component(5, colors[i], 10, 120));
-        }
+        //while(players.length < 2) {
+        //    console.log("esperando");
+        //}
+        Game.connectAndSubscribe(1);
+        //for(var i = 0; i < players.length; i++) {
+        //    myGamePiece.push(new component(5, colors[i], 10, 120));
+        //}
         // myGamePiece = new component(5, "red", 10, 120);
-        myGameArea.start();
+        //myGameArea.start();
+    };
+
+    var addPlayer = function() {
+        //while(players.length < 2) {
+        //    console.log("esperando");
+        //}
+        stompClient.send("/topic/newpoint.1", {}, "Test"); 
+        //for(var i = 0; i < players.length; i++) {
+        //    myGamePiece.push(new component(5, colors[i], 10, 120));
+        //}
+        // myGamePiece = new component(5, "red", 10, 120);
+        //myGameArea.start();
     };
 
     var myGameArea = {
@@ -118,11 +131,18 @@ var Game = (function () {
         //subscribe to /topic/TOPICXX when connections succeed
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            
-            stompClient.subscribe('/topic/newpoint'+topic, function (eventbody) {
-                var theObject=JSON.parse(eventbody.body);
-                //alert("Nuevo punto: "+theObject.x+" "+theObject.y);
-                players.push("Mateo");
+            console.log(players);
+
+            stompClient.subscribe('/topic/newpoint.'+topic, function (eventbody) {
+                players.push("Test");
+                console.log(eventbody);
+                if (players.length > 1) {
+                    for(var i = 0; i < players.length; i++) {
+                        myGamePiece.push(new component(5, colors[i], 10, 120));
+                    }
+                    myGamePiece = new component(5, "red", 10, 120);
+                    myGameArea.start();
+                }
             });
         });
 
@@ -196,6 +216,7 @@ var Game = (function () {
         changeColor:changeColor,
         hide:hide,
         table:table,
-        connectAndSubscribe:connectAndSubscribe
+        connectAndSubscribe:connectAndSubscribe,
+        addPlayer : addPlayer
     }
 })();
