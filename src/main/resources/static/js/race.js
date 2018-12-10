@@ -1,12 +1,20 @@
-var myGamePiece;
+var myGamePiece = [];
 
 var Game = (function () {
 
+    var players = ["Sebastian"];
+    var colors = ["red", "blue", "yellow", "green", "pink"];
     var i = 0;
     var laps=0;
     var speed = 0.02;
     var startGame = function() {
-        myGamePiece = new component(5, "red", 10, 120);
+        while(player.length < 2) {
+            console.log("esperando");
+        }
+        for(var i = 0; i < players.length; i++) {
+            myGamePiece.push(new component(5, colors[i], 10, 120));
+        }
+        // myGamePiece = new component(5, "red", 10, 120);
         myGameArea.start();
     };
 
@@ -33,9 +41,11 @@ var Game = (function () {
             // ctx.fillStyle = color;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-            ctx.strokeStyle = "red";
+            // ctx.strokeStyle = "red";
+            ctx.strokeStyle = color;
             ctx.stroke();
-            ctx.fillStyle = "red";
+            // ctx.fillStyle = "red";
+            ctx.fillStyle = color;
             ctx.fill();
             // ctx.fillRect(this.x, this.y, this.width, this.height);
         };
@@ -61,12 +71,14 @@ var Game = (function () {
             myGameArea.clear();
             alert('Finish!!!\nYou have win the race');
         }
-    }
+    };
 
     var updateGameArea = function() {
         myGameArea.clear();
-        myGamePiece.newPos();
-        myGamePiece.update();
+        for(var j = 0; j < players.length; j++) {
+            myGamePiece[j].newPos();
+            myGamePiece[j].update();
+        }
         if (speed == 0) {
             clearInterval(myGameArea.interval);
             document.getElementById("conserveButton").setAttribute("disabled","true");
@@ -109,12 +121,7 @@ var Game = (function () {
             stompClient.subscribe('/topic/newpoint'+topic, function (eventbody) {
                 var theObject=JSON.parse(eventbody.body);
                 //alert("Nuevo punto: "+theObject.x+" "+theObject.y);
-                addPointToCanvas(new Point(theObject.x,theObject.y));
-            });
-            stompClient.subscribe('/topic/newpolygon'+topic, function (eventbody) {
-                var theObject=JSON.parse(eventbody.body);
-                //alert("Nuevo polygon: "+theObject[3].x+" "+theObject[3].y);
-                addPolygonToCanvas(theObject);
+                players.push("Mateo");
             });
         });
 
@@ -187,6 +194,7 @@ var Game = (function () {
         changeSpeed:changeSpeed,
         changeColor:changeColor,
         hide:hide,
-        table:table
+        table:table,
+        connectAndSubscribe:connectAndSubscribe
     }
 })();
