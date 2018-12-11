@@ -58,7 +58,7 @@ public class CarrerasAPIController extends HttpServlet {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
-    
+
     @RequestMapping(method = RequestMethod.GET, value ="/jugador/{id}")
     public ResponseEntity<?> obtenerJugadorPorIdentificador(@PathVariable("id") String id){
         try{
@@ -68,7 +68,7 @@ public class CarrerasAPIController extends HttpServlet {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT, value = "/estrategia/{idEstrategia}/{llanta}/{aerodinamico}/{transmision}/{estilo}")
     public ResponseEntity<?> crearEstrategia(@PathVariable("idEstrategia") int idEstrategia, @PathVariable("llanta") String llanta, @PathVariable("aerodinamico") String aerodinamico, @PathVariable("transmision") String transmision, @PathVariable("estilo") String estilo){
         try{
@@ -101,7 +101,7 @@ public class CarrerasAPIController extends HttpServlet {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_MODIFIED);
         }
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> actualizarJugador(@RequestBody Jugador jugador){
         try{
@@ -112,6 +112,6 @@ public class CarrerasAPIController extends HttpServlet {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
         }
     }
-    
-    
+
+
 }

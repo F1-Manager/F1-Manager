@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/strategyRace.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <h2 class="title">Driving Style</h2>
+            <div class="panel panel-default">
+                <table class="table table-dark color">
+                    <thead>
+                    <tr>
+                        <th class="option" scope="col">Select Option</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td align="center"><button type="button" class="btn btn-lg" onclick="Stetic.changeColor(event)">Conserve</button></td>
+                        <td align="center"><button type="button" class="btn btn-primary btn-lg" onclick="Stetic.changeColor(event)">Balanced</button></td>
+                        <td align="center"><button type="button" class="btn btn-lg" onclick="Stetic.changeColor(event)">Press Down</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="title">Pit Stop</h2>
+            <div class="panel panel-default">
+                <table class="table table-dark color" >
+                    <thead>
+                    <tr>
+                        <th class="option" scope="col">Select Option</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td align="center"><button type="button" class="btn btn-primary btn-lg">Stay in track</button></td>
+                        <td align="center"><select class="btn btn-lg"><option value="soft">Soft</option><option value="hard">Hard</option><option value="wet">Wet</option></select></td>
+                        <!--<td align="center"><button type="button" class="btn btn-primary btn-lg">Balanced</button></td>-->
+                        <!--<td align="center"><button type="button" class="btn btn-primary btn-lg">Curve</button></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-primary">Back</button>
+        </div>
+
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="./js/strategyRace.js"></script>
+    </body>
+</html>

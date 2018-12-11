@@ -1,0 +1,16 @@
+body {
+    background-image:url(../img/strategyRaceBackground.png);
+    background-size: cover;
+}
+
+.title {
+    color: #bd2130;
+}
+
+.color {
+    background-color: #1b1e21;
+}
+
+.option {
+    color: #f8f8f8;
+}
