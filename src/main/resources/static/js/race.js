@@ -1,8 +1,7 @@
 var myGamePiece = [];
 
 var Game = (function () {
-
-    var stompClient = null;
+    var id;
     var players = [];
     var colors = ["red", "blue", "yellow", "green", "pink"];
     var i = 0;
@@ -13,25 +12,12 @@ var Game = (function () {
         //while(players.length < 2) {
         //    console.log("esperando");
         //}
-        Game.connectAndSubscribe(1);
         //for(var i = 0; i < players.length; i++) {
         //    myGamePiece.push(new component(5, colors[i], 10, 120));
         //}
         // myGamePiece = new component(5, "red", 10, 120);
-        //myGameArea.start();
-    };
-
-    var addPlayer = function() {
-        //while(players.length < 2) {
-        //    console.log("esperando");
-        //}
-        stompClient.send("/topic/newpoint.1", {}, "Test"); 
-        console.log("este esl el arreglo que buscamos"+players);
-        //for(var i = 0; i < players.length; i++) {
-        //    myGamePiece.push(new component(5, colors[i], 10, 120));
-        //}
-        // myGamePiece = new component(5, "red", 10, 120);
-        //myGameArea.start();
+        // myGameArea.start();
+        connectAndSubscribe(1);
     };
 
     var myGameArea = {
@@ -52,6 +38,7 @@ var Game = (function () {
         this.r = r;
         this.x = x;
         this.y = y;
+        // id = players.length;
         this.update = function() {
             ctx = myGameArea.context;
             // ctx.fillStyle = color;
@@ -91,10 +78,15 @@ var Game = (function () {
 
     var updateGameArea = function() {
         myGameArea.clear();
-        for(var j = 0; j < players.length; j++) {
-            myGamePiece[j].newPos();
-            myGamePiece[j].update();
-        }
+        // myGamePiece.newPos();
+        // myGamePiece.update();
+        console.log("id: " + id);
+        myGamePiece[id].newPos();
+        myGamePiece[id].update;
+        // for(var j = 0; j < players.length; j++) {
+        //     myGamePiece[j].newPos();
+        //     myGamePiece[j].update();
+        // }
         if (speed == 0) {
             clearInterval(myGameArea.interval);
             document.getElementById("conserveButton").setAttribute("disabled","true");
@@ -123,34 +115,6 @@ var Game = (function () {
             container.setAttribute("hidden", "true");
         }
     };
-    
-    var connectAndSubscribe = function (topic) {
-        
-        console.info('Connecting to WS...');
-        var socket = new SockJS('/stompendpoint');
-        stompClient = Stomp.over(socket);
-        
-        //subscribe to /topic/TOPICXX when connections succeed
-        stompClient.connect({}, function (frame) {
-            console.log('Connected: ' + frame);
-            console.log(players);
-
-            stompClient.subscribe('/topic/newpoint.'+topic, function (eventbody) {
-                players.push("Test");
-                console.log(eventbody);
-                if (players.length > 1) {
-                    for(var i = 0; i < players.length; i++) {
-                        myGamePiece.push(new component(5, colors[i], 10, 120));
-                    }
-                    myGamePiece = new component(5, "red", 10, 120);
-                    myGameArea.start();
-                }
-                console.log("es este el correct"+players);
-            });
-        });
-
-    };
-    
     
     var table = function(){
         // Crea un elemento <table> y un elemento <tbody>
@@ -212,14 +176,41 @@ var Game = (function () {
 //
 //            tb.appendChild(row); // add the row to the end of the table body
         
-    }
+    };
+
+    var connectAndSubscribe = function (id) {
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        stompClient = Stomp.over(socket);
+
+        //subscribe to /topic/newpoint when connections succeed
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/newpoint.' + id, function (eventbody) {
+                console.log("body " + eventbody);
+                players = JSON.parse(eventbody.body);
+                console.log("eventbody: " + players.length);
+                if(players.length > 1) {
+                    for(var k = 0; k < players.length;k++) {
+                        myGamePiece.push(new component(5, colors[k], 10, 120));
+                    }
+                }
+                myGameArea.start();
+            });
+        });
+
+    };
+
+    var send = function () {
+        stompClient.send("/app/newpoint.1", {}, "Test");
+    };
+
     return {
         startGame:startGame,
         changeSpeed:changeSpeed,
         changeColor:changeColor,
         hide:hide,
         table:table,
-        connectAndSubscribe:connectAndSubscribe,
-        addPlayer : addPlayer
+        send:send
     }
 })();
