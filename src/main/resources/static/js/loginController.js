@@ -10,7 +10,7 @@ var LoginControllerModule = (function() {
                 saveToken(response.headers.authorization, user);
                 getProfile(user, response.headers.authorization);
                 //document.cookie="Authorization= "+ response.headers.authorization;
-                //location.href="http://localhost:8080/profile.html"+"?"+user;
+                location.href="https://f1-manager.herokuapp.com/profile.html"+"?"+user;
 
             },
             onFailed: function(exception){

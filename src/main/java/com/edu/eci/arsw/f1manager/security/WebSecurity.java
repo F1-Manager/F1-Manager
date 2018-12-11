@@ -37,7 +37,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/races/jugador/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/races/token").permitAll()
                 .antMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))

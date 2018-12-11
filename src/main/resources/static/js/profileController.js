@@ -66,12 +66,17 @@ var ProfileControllerModule =(function(){
         };
         RestControllerModule.postUser(player,callbackPost);
     };
+
+    var play = function () {
+        location.href="https://f1-manager.herokuapp.com/race.html";
+    }
     
     return {
         loadInfo:loadInfo,
         changeTeam: changeTeam,
         selectTeam: selectTeam,
-        postTeam: postTeam
+        postTeam: postTeam,
+        play: play
     }
 })();
 
