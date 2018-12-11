@@ -9,6 +9,7 @@ var Game = (function () {
     var laps=0;
     var speed = 0.02;
     var startGame = function() {
+        
         //while(players.length < 2) {
         //    console.log("esperando");
         //}
@@ -25,6 +26,7 @@ var Game = (function () {
         //    console.log("esperando");
         //}
         stompClient.send("/topic/newpoint.1", {}, "Test"); 
+        console.log("este esl el arreglo que buscamos"+players);
         //for(var i = 0; i < players.length; i++) {
         //    myGamePiece.push(new component(5, colors[i], 10, 120));
         //}
@@ -143,6 +145,7 @@ var Game = (function () {
                     myGamePiece = new component(5, "red", 10, 120);
                     myGameArea.start();
                 }
+                console.log("es este el correct"+players);
             });
         });
 
