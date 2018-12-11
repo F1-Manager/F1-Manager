@@ -38,7 +38,9 @@ var Game = (function () {
         this.r = r;
         this.x = x;
         this.y = y;
-        // id = players.length;
+        console.log(players.length);
+        id = players.length;
+        console.log("idd: " + id);
         this.update = function() {
             ctx = myGameArea.context;
             // ctx.fillStyle = color;
@@ -81,18 +83,18 @@ var Game = (function () {
         // myGamePiece.newPos();
         // myGamePiece.update();
         console.log("id: " + id);
-        myGamePiece[id].newPos();
-        myGamePiece[id].update;
+        myGamePiece[id-1].newPos();
+        myGamePiece[id-1].update();
         // for(var j = 0; j < players.length; j++) {
         //     myGamePiece[j].newPos();
         //     myGamePiece[j].update();
         // }
-        if (speed == 0) {
-            clearInterval(myGameArea.interval);
-            document.getElementById("conserveButton").setAttribute("disabled","true");
-            document.getElementById("balancedButton").setAttribute("disabled","true");
-            document.getElementById("pressDownButton").setAttribute("disabled","true");
-        }
+        // if (speed == 0) {
+        //     clearInterval(myGameArea.interval);
+        //     document.getElementById("conserveButton").setAttribute("disabled","true");
+        //     document.getElementById("balancedButton").setAttribute("disabled","true");
+        //     document.getElementById("pressDownButton").setAttribute("disabled","true");
+        // }
     };
 
     var changeSpeed = function (spd) {
@@ -190,12 +192,17 @@ var Game = (function () {
                 console.log("body " + eventbody);
                 players = JSON.parse(eventbody.body);
                 console.log("eventbody: " + players.length);
+                myGamePiece.push(new component(5, colors[players.length-1], 10, 120));
                 if(players.length > 1) {
-                    for(var k = 0; k < players.length;k++) {
-                        myGamePiece.push(new component(5, colors[k], 10, 120));
-                    }
+                    myGameArea.start();
                 }
-                myGameArea.start();
+                // if(players.length > 1) {
+                //     for(var k = 0; k < players.length;k++) {
+                //         myGamePiece.push(new component(5, colors[k], 10, 120));
+                //     }
+                //     myGameArea.start();
+                // }
+
             });
         });
 
