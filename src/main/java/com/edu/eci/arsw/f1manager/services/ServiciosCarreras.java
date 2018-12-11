@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public interface ServiciosCarreras {
     
-    void iniciarCarrera(String tipo,String clima, int numeroVueltas) throws ExcepcionServiciosCarreras;
-    void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int idAutomovil, int estrategia, String idCarrera, String equipo) throws ExcepcionServiciosCarreras;
+    void iniciarCarrera() throws ExcepcionServiciosCarreras;
+    void actualizarJugador(String usuario, int puntos, int posicion, float tiempo, int idAutomovil, int estrategia, String idCarrera, String equipo, String token) throws ExcepcionServiciosCarreras;
     void guardarEstrategia(int idEstrategia, String estilo, String llanta, String aerodinamico, String trasmision ) throws ExcepcionServiciosCarreras;
     ArrayList<Jugador> consultarCarrera(String identificador) throws ExcepcionServiciosCarreras;
     Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras;

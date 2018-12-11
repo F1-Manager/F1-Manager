@@ -10,6 +10,7 @@ var ProfileControllerModule =(function(){
         console.log(user);
         var callback={
             onSuccess: function(player){
+                $("#points").append("<span>"+player.puntos+"</span>");
                 $("#email").append("<p>"+player.correo+"</p>");
                 $("#date").append("<p>"+player.fechaNacimiento+"</p>");
                 $("#gender").append("<p>"+player.genero+"</p>");

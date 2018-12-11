@@ -15,8 +15,13 @@ https://f1-manager.herokuapp.com/
 
 ## Architecture
 
-- **Component architecture:**
+La arquitectura esta compuesta por un cliente pesado en Javascript, un controlador Spring para aceptar multiples peticiones HTTP realizadas desde un cliente WEB, el controlador tiene inyectado un servicio que se encarga de realizar las operaciones de la aplicación y las transacciones en la base de datos (MongoDB). La aplicación garantiza autenticación y autorización mediante token (JWT).
+
+- Component architecture:
+
 ![](img/DiagramaComponentes.png)
 
-- **Deployment architecture:**
+- Deployment architecture:
+
 ![](img/DiagramaDespliegue.png)
+

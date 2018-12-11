@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 var RestControllerModule = (function () {
-    var putUser = function (user, passwd, email, date, gender, callback){
-        axios.put('/races/jugador/'+user+'/'+passwd+'/'+email+'/'+date+'/'+gender)
+    var putUser = function (user, callback){
+        axios.post('/races/sign-up', user)
                 .then(function(user){
                     callback.onSuccess(user.data);
                     console.log("User received");
@@ -39,12 +39,70 @@ var RestControllerModule = (function () {
                     console.log("Unexpected error");
                 });
     };
+
+    var login = function (user, callback) {
+        axios.post('/login', user)
+            .then(function (value) {
+                callback.onSuccess(value);
+            })
+            .catch(function (reason) {
+                callback.onFailed(reason);
+                console.log(reason.response)
+            })
+    }
+
+    var postToken = function (user, callback) {
+        axios.post('/races/token', user)
+            .then(function (value) {
+                callback.onSuccess(value);
+            })
+            .catch(function (reason) {
+                callback.onFailed(reason);
+                console.log(reason);
+            })
+    }
+    
+    var createRace = function (callback) {
+        axios({
+            method: 'put',
+            url: '/races',
+            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJEYW5pZWxhIiwiZXhwIjoxNTQ1MzYzMTQ4fQ.O7Jddjtk2FMNn9gkjkG-5ZKRH275PyLgOz5-1IaCWC8jpY552oTqKpYlSPxGcLJM5Z_fwrO8BUSws86HOHE71w'}
+        })
+            .then(function (value) {
+                console.log(value);
+                callback.onSuccess(value);
+            })
+            .catch(function (reason) {
+                callback.onFailed(reason);
+                console.log(reason);
+            })
+    }
+
+    var getProfile = function (user, token, callback) {
+        axios({
+            method: 'get',
+            url: '/profile.html?'+user,
+            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJEYW5pZWxhIiwiZXhwIjoxNTQ1MzYzMTQ4fQ.O7Jddjtk2FMNn9gkjkG-5ZKRH275PyLgOz5-1IaCWC8jpY552oTqKpYlSPxGcLJM5Z_fwrO8BUSws86HOHE71w'}
+        })
+            .then(function (value) {
+                console.log(value);
+                callback.onSuccess(value);
+            })
+            .catch(function (reason) {
+                callback.onFailed(reason);
+                console.log(reason);
+            })
+    }
     
     
     return {
         putUser:putUser,
         getUser:getUser,
-        postUser:postUser
+        postUser:postUser,
+        login: login,
+        postToken: postToken,
+        createRace: createRace,
+        getProfile: getProfile
     };
 })();
  

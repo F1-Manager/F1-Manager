@@ -26,8 +26,9 @@ public class Jugador {
     private int automovil;
     private int estrategia;
     private String idCarrera;
+    private String token;
 
-    public Jugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, String equipo, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera) {
+    public Jugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, String equipo, int puntos, int posicion, float tiempo, int automovil, int estrategia, String idCarrera, String token) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.correo = correo;
@@ -40,7 +41,10 @@ public class Jugador {
         this.automovil = automovil;
         this.estrategia = estrategia;
         this.idCarrera = idCarrera;
+        this.token = token;
     }
+
+    public Jugador(){}
     
     public String getIdCarrera() {
         return idCarrera;
@@ -125,4 +129,12 @@ public class Jugador {
     public String getGenero() { return genero; }
 
     public void setGenero(String genero) { this.genero = genero; }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

@@ -33,7 +33,7 @@
                 <input id="username" class="form-control mr-sm-2" type="text" placeholder="Enter your user" required/><br>
                 <output style="color: whitesmoke;font-weight: bold">Password</output>
                 <input id="password" type="password" class="form-control" placeholder="Enter your password" required/><br>
-                <button type="button" class="btn btn-success my-2 my-sm-0" style="width: 100%" onClick="LoginControllerModule.doLogin($('#username').val(),cifrar($('#password').val()))">Sign in</button>
+                <button type="button" class="btn btn-success my-2 my-sm-0" style="width: 100%" onClick="LoginControllerModule.doLogin($('#username').val(),$('#password').val())">Sign in</button>
             </form>
         </div>
 
@@ -64,7 +64,7 @@
                         <label class="custom-control-label" style="color: whitesmoke" for="female">Female</label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success my-2 my-sm-0" onclick="LoginControllerModule.register($('#user').val(),cifrar($('#passwd').val()),$('#email').val(),$('#date').val(),$('input[name=gender]:checked').val())">Create an account</button>
+                <button type="button" class="btn btn-success my-2 my-sm-0" onclick="LoginControllerModule.register($('#user').val(),$('#passwd').val(),$('#email').val(),$('#date').val(),$('input[name=gender]:checked').val()), login()">Create an account</button>
             </form>
         </div>
         
@@ -75,14 +75,6 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/sha256.js"></script>
-    <script type="text/javascript">
-        function cifrar(pass){
-            var hash = sha256.create();
-            hash.update(pass);
-            return hash.hex();
-        }
-    </script>
     <script type="text/javascript">
         function register() {
             var login = document.getElementById("login");
