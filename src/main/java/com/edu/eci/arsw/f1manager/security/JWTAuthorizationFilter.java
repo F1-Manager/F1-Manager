@@ -24,6 +24,14 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         super(authManager);
     }
 
+    /**
+     * 
+     * @param req
+     * @param res
+     * @param chain
+     * @throws IOException
+     * @throws ServletException 
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException{
         String header = req.getHeader(HEADER_STRING);
@@ -40,6 +48,11 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(req, res);
     }
 
+    /**
+     * 
+     * @param request
+     * @return 
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request){
         String token = request.getHeader(HEADER_STRING);
 

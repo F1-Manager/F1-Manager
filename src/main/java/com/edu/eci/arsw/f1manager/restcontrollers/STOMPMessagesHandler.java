@@ -20,6 +20,12 @@ public class STOMPMessagesHandler {
 
     private List<Jugador> playersList = new ArrayList<>();
 
+    /**
+     * si un mensaje es enviado para /newpoint.1 es escuchado y enviado para hacer una suscripcion y publicacio
+     * a "/topic/newpoint.1"
+     * @param player
+     * @throws Exception 
+     */
     @MessageMapping("/newpoint.1")
     public void handlePointEvent(String player) throws Exception {
         playersList.add(new Jugador(player, "hola", "hola@hotmail.com", "10/10/1997", "genero", "1", 1 ,2, 15.5f, 3, 2, "carrera","token"));

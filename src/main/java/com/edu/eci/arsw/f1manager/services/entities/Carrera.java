@@ -24,26 +24,50 @@ public class Carrera {
         this.numeroVueltas = numeroVueltas;
     }
     
+    /**
+     * Obtener el identificador de una carrera 
+     * @return 
+     */
     public String getIdentificador() {
         return identificador;
     }
 
+    /**
+     * Asignar un identificador a una carrera
+     * @param identificador 
+     */
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
+    /**
+     * Obtener el clima de una carrera
+     * @return 
+     */
     public String getClima() {
         return clima;
     }
 
+    /**
+     * Asignarle un clima a la carrera
+     * @param clima 
+     */
     public void setClima(String clima) {
         this.clima = clima;
     }
 
+    /**
+     *  Obtener el numero de vueltas que deben realizarse en la carrera
+     * @return 
+     */
     public int getNumeroVueltas() {
         return numeroVueltas;
     }
 
+    /**
+     *  Asignar el numero de vultas que se haran en una carrera
+     * @param numeroVueltas 
+     */
     public void setNumeroVueltas(int numeroVueltas) {
         this.numeroVueltas = numeroVueltas;
     }

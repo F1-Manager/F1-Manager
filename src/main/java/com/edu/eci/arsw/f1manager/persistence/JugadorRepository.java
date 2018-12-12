@@ -15,5 +15,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface JugadorRepository extends MongoRepository<Jugador, String>{
     //public void updateJugador(Jugador jugador) throws PersistenceException;
     //public ArrayList<Jugador> findByJugadoresPorCarrera(String identificador) throws PersistenceException;
+    /**
+     * Buscar un usuario dado su identificcacion
+     * @param usuario cadena que identifica al usuario
+     * @return
+     * @throws PersistenceException 
+     */
     public Jugador findByUsuario(String usuario) throws PersistenceException;
 }

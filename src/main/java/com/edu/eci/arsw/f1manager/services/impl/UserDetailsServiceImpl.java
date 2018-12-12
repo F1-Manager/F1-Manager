@@ -15,10 +15,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private JugadorRepository applicationUserRepository;
 
+    
     public UserDetailsServiceImpl(JugadorRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
     }
 
+    /**
+     * Cragar un usuario dado el nombre de este
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException 
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
 

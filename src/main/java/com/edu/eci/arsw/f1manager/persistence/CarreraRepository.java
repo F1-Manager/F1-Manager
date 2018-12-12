@@ -13,5 +13,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author danielagonzalez-dianasanchez
  */
 public interface CarreraRepository extends MongoRepository<Carrera, String>{
+    /**
+     * Encontrar un usuario dado su identificador
+     * @param identificador es una cadena
+     * @return
+     * @throws PersistenceException 
+     */
     public Carrera findByIdentificador(String identificador) throws PersistenceException;
 }

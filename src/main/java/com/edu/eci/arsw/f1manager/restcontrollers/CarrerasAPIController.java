@@ -43,11 +43,20 @@ public class CarrerasAPIController extends HttpServlet {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private JugadorRepository jugadorRepository;
 
+    /**
+     * 
+     * @param jugadorRepository
+     * @param bCryptPasswordEncoder 
+     */
     public CarrerasAPIController(JugadorRepository jugadorRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.jugadorRepository = jugadorRepository;
     }
 
+    /**
+     * poner los datos de la carrera en la base de datos apenas inicia
+     * @return  el  estatus del codigo http 
+     */
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> crearCarrera(){
         try {
@@ -59,6 +68,11 @@ public class CarrerasAPIController extends HttpServlet {
         }
     }
 
+    /**
+     * Dado un identificador de un jugador busca en la base de datos al jugador
+     * @param id
+     * @return retorna el jugador que se encuentyra y el estado del codigo http
+     */
     @RequestMapping(method = RequestMethod.GET, value ="/jugador/{id}")
     public ResponseEntity<?> obtenerJugadorPorIdentificador(@PathVariable("id") String id){
         try{
@@ -69,6 +83,15 @@ public class CarrerasAPIController extends HttpServlet {
         }
     }
 
+    /**
+     * Dado la seleccion de estrategias del jugador, se guardan la modificacines que se elaboraron en la base de datos
+     * @param idEstrategia
+     * @param llanta
+     * @param aerodinamico
+     * @param transmision
+     * @param estilo
+     * @return  retorna un string confirmando que la estrategia seleccionada fue creada y el codigo de del estado del HTTP
+     */
     @RequestMapping(method = RequestMethod.PUT, value = "/estrategia/{idEstrategia}/{llanta}/{aerodinamico}/{transmision}/{estilo}")
     public ResponseEntity<?> crearEstrategia(@PathVariable("idEstrategia") int idEstrategia, @PathVariable("llanta") String llanta, @PathVariable("aerodinamico") String aerodinamico, @PathVariable("transmision") String transmision, @PathVariable("estilo") String estilo){
         try{
@@ -80,6 +103,11 @@ public class CarrerasAPIController extends HttpServlet {
         }
     }
     
+    /**
+     * Al registrar un nuevo usuario se crea un jugador en la base de datos y se salva todos los datos proporcionados por este en la base de datos
+     * @param jugador
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/sign-up")
     public ResponseEntity<?> crearJugador(@RequestBody Jugador jugador ){
         try{
@@ -91,6 +119,11 @@ public class CarrerasAPIController extends HttpServlet {
         }
     }
 
+    /**
+     * Modificar el token de un jugador que ya existe.
+     * @param jugador
+     * @return un mensjae que indica que el token fue actualizado y el codigo de estado del HTTP
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/token")
     public ResponseEntity<?> actualizarTokenJugador(@RequestBody Jugador jugador){
         try{
@@ -102,6 +135,11 @@ public class CarrerasAPIController extends HttpServlet {
         }
     }
 
+    /**
+     * Actualizar un jugador
+     * @param jugador
+     * @return un mensaje indicando que se actualizo correctamente y el codigo de etado DEL http
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> actualizarJugador(@RequestBody Jugador jugador){
         try{

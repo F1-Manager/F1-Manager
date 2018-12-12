@@ -113,6 +113,21 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
         return jugadores;
     }
 
+    /**
+     * Crear un jugador nuevo con los datos ingresados en la pagina de registro
+     * @param usuario
+     * @param contrasena
+     * @param correo
+     * @param fechaNacimiento
+     * @param genero
+     * @param puntos
+     * @param posicion
+     * @param tiempo
+     * @param automovil
+     * @param idEstrategia
+     * @param idCarrera
+     * @throws ExcepcionServiciosCarreras 
+     */
     @Override
     public void crearJugador(String usuario, String contrasena, String correo, String fechaNacimiento, String genero, int puntos, int posicion, float tiempo, int automovil, int idEstrategia, String idCarrera) throws ExcepcionServiciosCarreras{
         if (jugador.findByUsuario(usuario) == null){
@@ -125,13 +140,24 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
         }
     }
     
-    
+    /**
+     * Consultar una carrera dado un identificador
+     * @param identificador
+     * @return
+     * @throws ExcepcionServiciosCarreras 
+     */
     @Override
     public Carrera consultarCarreraPorIdentificador(String identificador) throws ExcepcionServiciosCarreras{
         return carrera.findByIdentificador(identificador);
         
     }
     
+    /**
+     * Obtener un jugador por medio de un usuario
+     * @param usuario
+     * @return
+     * @throws ExcepcionServiciosCarreras 
+     */
     @Override
     public Jugador consultarJugadorPorUsuario(String usuario) throws ExcepcionServiciosCarreras{
         if (jugador.findByUsuario(usuario)!=null){
@@ -140,6 +166,11 @@ public class ServiciosCarrerasImpl implements ServiciosCarreras,CommandLineRunne
         throw new ExcepcionServiciosCarreras(usuario+" does not exist");
     }
 
+    /**
+     * Iniciar el proceso para jugar.
+     * @param args
+     * @throws Exception 
+     */
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Connection to MongoDB");

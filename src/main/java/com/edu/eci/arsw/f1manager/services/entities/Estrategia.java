@@ -28,42 +28,82 @@ public class Estrategia {
         this.estilo = estilo;
     }
 
+    /**
+     * Obtener el identificador de una estrategia
+     * @return 
+     */
     public int getIdEstrategia() {
         return idEstrategia;
     }
 
+    /**
+     * Obtener el tipo de llanta usada
+     * @return 
+     */
     public String getLlanta() {
         return llanta;
     }
 
+    /**
+     * Obtener la aerodinamica seleccionada
+     * @return 
+     */
     public String getAerodinamico() {
         return aerodinamico;
     }
 
+    /**
+     * Obtener la transmision utilizada
+     * @return 
+     */
     public String getTrasmision() {
         return trasmision;
     }
 
+    /**
+     * Obtener el estilo de estrategia utilizada
+     * @return 
+     */
     public String getEstilo() {
         return estilo;
     }
 
+    /**
+     * Asignar un identificador a la estrategia
+     * @param idEstrategia 
+     */
     public void setIdEstrategia(int idEstrategia) {
         this.idEstrategia = idEstrategia;
     }
 
+    /**
+     * Asignar las llantas que se seleccionaron
+     * @param llanta 
+     */
     public void setLlanta(String llanta) {
         this.llanta = llanta;
     }
 
+    /**
+     *  Asignar la característica de aerodinamica
+     * @param aerodinamico 
+     */
     public void setAerodinamico(String aerodinamico) {
         this.aerodinamico = aerodinamico;
     }
 
+    /**
+     * Asignar la transmision
+     * @param trasmision 
+     */
     public void setTrasmision(String trasmision) {
         this.trasmision = trasmision;
     }
 
+    /**
+     * Asignar es estilo de la estrategia.
+     * @param estilo 
+     */
     public void setEstilo(String estilo) {
         this.estilo = estilo;
     }
