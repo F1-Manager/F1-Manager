@@ -39,7 +39,7 @@ var Game = (function () {
         this.x = x;
         this.y = y;
         console.log(players.length);
-        id = players.length;
+        this.id = players.length;
         console.log("idd: " + id);
         this.update = function() {
             ctx = myGameArea.context;
@@ -67,6 +67,7 @@ var Game = (function () {
                 
             }
             rounds(this.x,this.y);
+            return( {x:x, y:y, speed:speed} );
         }
     };
     
@@ -83,8 +84,10 @@ var Game = (function () {
         // myGamePiece.newPos();
         // myGamePiece.update();
         console.log("id: " + id);
-        myGamePiece[id-1].newPos();
-        myGamePiece[id-1].update();
+        var pt = myGamePiece[id].newPos();
+//        speed = pt.speed;
+        console.log(pt);
+        stompClient.send("/app/test.1", {}, JSON.stringify({id : id, x : pt.x, y: pt.y , speed:pt.speed}));
         // for(var j = 0; j < players.length; j++) {
         //     myGamePiece[j].newPos();
         //     myGamePiece[j].update();
@@ -180,7 +183,7 @@ var Game = (function () {
         
     };
 
-    var connectAndSubscribe = function (id) {
+    var connectAndSubscribe = function (idInit) {
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');
         stompClient = Stomp.over(socket);
@@ -188,10 +191,9 @@ var Game = (function () {
         //subscribe to /topic/newpoint when connections succeed
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/newpoint.' + id, function (eventbody) {
-                console.log("body " + eventbody);
+            stompClient.subscribe('/topic/newpoint.' + idInit, function (eventbody) {
                 players = JSON.parse(eventbody.body);
-                console.log("eventbody: " + players.length);
+                console.log("eventbody: " + colors[players.length-1]);
                 myGamePiece.push(new component(5, colors[players.length-1], 10, 120));
                 if(players.length > 1) {
                     myGameArea.start();
@@ -204,12 +206,26 @@ var Game = (function () {
                 // }
 
             });
+            
+            stompClient.subscribe('/topic/test.' + idInit, function (eventbody) {
+                pt = JSON.parse(eventbody.body);
+                
+                myGamePiece[ pt.id ].x = pt.x;
+                myGamePiece[ pt.id ].y = pt.y;
+                myGamePiece[ pt.id ].speed = pt.speed;
+                myGamePiece[ pt.id ].newPos();
+                myGamePiece[ pt.id ].update();
+
+            });
         });
+        
+        
 
     };
 
     var send = function () {
         stompClient.send("/app/newpoint.1", {}, "Test");
+        id = players.length;
     };
 
     return {
